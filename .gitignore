@@ -9,3 +9,20 @@ __pycache__/
 
 # VSCode
 .vscode/
+
+# Obsidian workspace state (keep only the CSS snippet)
+.obsidian/app.json
+.obsidian/appearance.json
+.obsidian/core-plugins.json
+.obsidian/graph.json
+.obsidian/workspace.json
+.obsidian/.DS_Store
+
+# Scratch / temporary files
+*.canvas
+*.base
+pdfedtior.py
+2026-06-03.md
+
+# Former nested repo — clutter excluded
+LabA-electronics/

@@ -1,0 +1,129 @@
+/* Lab Report — TAU Electronics A */
+
+/* Times New Roman for all body text */
+body,
+.markdown-preview-view,
+.markdown-source-view,
+.cm-content {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* Headings keep a clean serif look */
+h1, h2, h3, h4 {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* Figure captions — paragraphs that begin with italic text (i.e. *Figure N: ...*) */
+/* Using :first-child (not :only-child) so inline $math$ siblings don't break the match */
+.markdown-preview-view p:has(> em:first-child) {
+  color: #006b73 !important;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center !important;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+/* Color the italic text and any inline math inside the caption */
+.markdown-preview-view p:has(> em:first-child) em,
+.markdown-preview-view p:has(> em:first-child) .math,
+.markdown-preview-view p:has(> em:first-child) mjx-container {
+  color: #006b73 !important;
+}
+
+/* Math stays in its own font — do not override */
+.math, mjx-container {
+  font-family: unset !important;
+}
+
+/* ===== PDF / A4 EXPORT ===== */
+@media print {
+  /* A4 page with comfortable margins */
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm;
+  }
+
+  /* Keep the teal captions and any colored text in the printed PDF */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Readable body size on paper */
+  body,
+  .markdown-preview-view {
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Don't split a figure (image + its caption) across two pages, and keep it
+     attached to the heading/equation directly above it */
+  .markdown-preview-view p:has(> img) {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: avoid;
+    page-break-after: avoid;
+    break-before: avoid;
+    page-break-before: avoid;
+    text-align: center;
+  }
+  .markdown-preview-view p:has(> img) + p:has(> em:first-child) {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* Scale images to fit the A4 text width */
+  .markdown-preview-view img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Keep section headings glued to the content that follows them so a title
+     is never stranded at the bottom of a page away from its body/figure */
+  h1, h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* An intro paragraph that is immediately followed by a figure stays with it,
+     so "heading → short text → figure" chains move to the next page as one unit */
+  .markdown-preview-view p:has(+ p > img) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Block-level widow/orphan control for running text */
+  .markdown-preview-view p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Glue a block equation to whatever follows it (e.g. heading → equation → figure).
+     This stops a heading + its equation from stranding the figure on the next page. */
+  .markdown-preview-view p:has(> mjx-container[display="true"]),
+  .markdown-preview-view p:has(> .math-block),
+  .markdown-preview-view mjx-container[display="true"],
+  .markdown-preview-view .math-block,
+  .markdown-preview-view .math-display {
+    break-after: avoid;
+    page-break-after: avoid;
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* Avoid breaking tables, equations and list items mid-element */
+  table, tr, td, th,
+  mjx-container, .math {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Tables should fit the page width */
+  table {
+    width: 100%;
+    font-size: 10pt;
+  }
+}
