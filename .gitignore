@@ -26,3 +26,11 @@ pdfedtior.py
 
 # Former nested repo — clutter excluded
 LabA-electronics/
+
+# macOS
+.DS_Store
+
+# Rendered report PDFs are non-reproducible build artifacts — ignore them,
+# but keep the frozen style example under docs/.
+*.pdf
+!docs/report-style-example.pdf

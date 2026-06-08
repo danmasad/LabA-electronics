@@ -30,6 +30,51 @@ Upload the screenshot in the chat. The agent will explain the results and contin
 
 ---
 
+## Building reports to PDF
+
+Reports are written in Markdown and compiled to a styled A4 PDF with `utils/build_pdf.sh`.
+
+### Dependencies
+
+| Tool | Purpose | Tested version |
+|------|---------|----------------|
+| [pandoc](https://pandoc.org) | Markdown → LaTeX | 3.9 |
+| [tectonic](https://tectonic-typesetting.github.io) | LaTeX → PDF engine | 0.16 |
+| bash | runs the script | 3.2+ (macOS default) |
+
+Install on macOS (Homebrew):
+
+```bash
+brew bundle            # installs everything listed in the Brewfile
+# – or manually –
+brew install pandoc tectonic
+```
+
+(On Linux, install `pandoc` and `tectonic` from your package manager or via `cargo install tectonic`.)
+
+> **First run needs internet.** `tectonic` downloads the LaTeX packages and fonts it needs into a local cache (`~/Library/Caches/Tectonic/`) the first time. Every build after that is offline and takes a few seconds.
+
+### Building
+
+```bash
+# from the repo root — quote the path, filenames contain '#'
+utils/build_pdf.sh "labs/LAB-5/exp#5_pre_shailivshits_208632216_danmasad_206505307.md"
+```
+
+The PDF is written next to the Markdown file. Optionally pass a custom output path as a second argument:
+`utils/build_pdf.sh input.md output.pdf`.
+
+> [`docs/report-style-example.pdf`](docs/report-style-example.pdf) is a committed, frozen **sample of the output style**. The actual report PDFs are git-ignored (non-reproducible build artifacts) — just re-render them locally rather than committing them.
+
+### What controls the styling
+
+`build_pdf.sh` pulls in two shared files so every report looks the same — edit only the `.md` and re-run:
+
+- `utils/report-style.tex` — A4 geometry, Times-like font, centered page footer, heading rules.
+- `utils/center-images.lua` — keeps each image with its `*Figure N: ...*` caption, centers them, and colors captions blue.
+
+---
+
 ## Folder Structure
 
 ```
@@ -41,6 +86,7 @@ labs/
     report.md          ← final submission
     assets/
 
+utils/                 ← build_pdf.sh + shared PDF style (report-style.tex, center-images.lua)
 code/                  ← Arduino / Python measurement scripts
 data/                  ← raw CSV / text data from instruments
 schematics/            ← circuit schematics
