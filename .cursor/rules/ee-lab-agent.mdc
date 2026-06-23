@@ -32,16 +32,37 @@ Always include both names in the report header as:
 ## Document Formatting (apply to every report)
 
 - **Font:** Times New Roman for all text (enforced via `.obsidian/snippets/lab-report-style.css` in the vault)
-- **Figure captions:** always use plain Markdown italic — `*Figure N: text with $math$.*` — so that LaTeX renders correctly; the CSS snippet targets these automatically and applies dark teal (#006b73) and Times New Roman
+- **Figure captions:** use the `\figcap{...}` LaTeX command (defined in the YAML header below) — renders centered, dark teal (#006b73), italic. Format: `Figure N - Print N: description.`
 - **Caption length:** 1 sentence max — key measurement or result only; no verbose re-explanation of the setup
-- **Image embed syntax:**
+- **Image embed syntax (PDF-ready):**
   ```
-  ![Fig N](assets/filename.png)
+  ![ ](assets/filename.png)
+  \nopagebreak[4]
 
-  *Figure N: Brief description with $math$ if needed.*
+  \figcap{Figure N - Print N: Brief description with $math$ if needed.}
   ```
-- **Table format:** standard Markdown tables; no double-pipe prefix
-- **PDF export:** the snippet includes `@media print` A4 rules (page size, margins, color preservation, no figure/table/equation page-splits). Always keep each figure as an image-paragraph immediately followed by its `*Figure N: ...*` caption so they stay together on export.
+  The empty alt text `![ ]` prevents pandoc from creating a float environment. `\nopagebreak[4]` (on the line immediately after the image, no blank line) prevents a page break between image and caption.
+- **Table format:** standard Markdown tables; control column widths via separator-row dash proportions (more dashes = wider column); make value/number columns narrow and text/description columns wide.
+- **PDF export:** built with `utils/build_pdf.sh` (pandoc + tectonic, locally excluded from git). Every post-lab report `.md` must include the following YAML front matter:
+
+  ```yaml
+  ---
+  header-includes:
+    - \usepackage{xcolor}
+    - \definecolor{labteal}{HTML}{006b73}
+    - \newcommand{\figcap}[1]{\begin{center}\textcolor{labteal}{\textit{#1}}\end{center}}
+    - \makeatletter
+    - \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{2em}{-3.25ex plus -1ex minus -.2ex}{1.5ex plus .2ex}{\normalfont\normalsize\bfseries}}
+    - \makeatother
+  ---
+  ```
+
+- **Heading hierarchy in PDF:**
+  - `#` (document title) and `##` (major sections) — both flush with the left margin
+  - `###` (subsections) — indented `2em` from the left margin
+  - Add `\newpage` before each `##` section to start it on a fresh page
+
+- **Figure numbering:** every figure caption prefixes the print number with a sequential figure number: `Figure N - Print N: …`. Supplementary prints use letter suffixes (e.g. `Figure 2b`).
 
 ---
 
@@ -144,7 +165,7 @@ Before writing the final report, verify:
 - [ ] All numerical values carry units
 - [ ] % error computed wherever theory vs. measurement exists
 - [ ] Conclusions explicitly address each stated objective of the lab
-- [ ] All figure captions use `<p class="fig-caption">` syntax and are brief (≤ 2 sentences)
+- [ ] All figure captions use `\figcap{Figure N - Print N: …}` syntax, are centered teal italic in the PDF, and are brief (1 sentence)
 - [ ] Math uses `$` / `$$` delimiters (no `\(` or `\[`)
 - [ ] Student names are Shai Livshits and Dan Masad in the header
 
