@@ -8,7 +8,7 @@ header-includes:
   - \makeatother
 ---
 
-# Lab 6: Distributed Circuits and Transmission Lines - Post-Lab Report
+# Lab 6: Distributed Circuits and Transmission Lines - Final Report
 
 **Students:** Shai Livshits · 208632216 &nbsp;|&nbsp; Dan Masad · 206505307
 
@@ -32,85 +32,74 @@ The incident voltage amplitude at A for a matched source ($Z_s = Z_0 = 50\,\Omeg
 
 
 
-### Q1.1.1 - Voltage Waveforms for Each Termination
+### Q1.1 - Pulse Propagation and Reflection for Each Load
 
-Seven loads were measured. Ch1 (yellow) = V(A) at T-Junction A; Ch2 (green) = V(B) at T-Junction B. The steady-state load voltage is $V(B) = V_\text{inc}(1 + \Gamma_L)$.
+This subsection answers questions 1.1.1, 1.1.3, and 1.1.4 together: for each load (a)-(g) we show the captured waveform at points A and B (Prints 1-7, question 1.1.1), identify the load type from the shape and polarity of the reflected pulse (question 1.1.3), and compare the observed steady-state response with the theoretical prediction (question 1.1.4). The quantitative reflection coefficients (question 1.1.2) are tabulated separately in Q1.1.2.
 
-Minor reactive-like transients were observed for some loads, attributed to connector parasitics and cable discontinuities; steady-state values were used for all measurements.
+Ch1 (yellow) = V(A) at T-Junction A; Ch2 (green) = V(B) at T-Junction B. The steady-state load voltage is $V(B) = V_\text{inc}(1 + \Gamma_L)$. Minor reactive-like transients were observed for some loads, attributed to connector parasitics and cable discontinuities; steady-state values were used for all measurements.
 
-\newpage
+#### (a) Short Circuit ($Z_L \approx 0\,\Omega$, $\Gamma = -1$)
 
-#### (i) Short Circuit ($Z_L \approx 0\,\Omega$, $\Gamma = -1$)
-
-Theory: $V(B) \approx 0$, brief delta-function spike at each transition; $V(A)$ shows the incident wave with a negative-polarity reflected pulse arriving at $\Delta t = 2 \times t_d \approx 56\,\text{ns}$ later.
+Theory: $V(B) \approx 0$, with a brief delta-function spike at each transition; $V(A)$ shows the incident wave followed by a negative-polarity reflected pulse arriving $\Delta t = 2 \times t_d \approx 56\,\text{ns}$ later. Scope signature: an inverted (negative) reflected pulse identifies a load below $Z_0$, here a short.
 
 ![ ](assets/print_q1_SC.png)
 \nopagebreak[4]
 
-\figcap{Figure 2: Print 1 - Short circuit - Ch1 (yellow, V(A)) shows the incident pulse with the negative reflected phase.}
+\figcap{Figure 2: Print 1 - Short circuit - Ch1 (yellow, V(A)) shows the incident pulse followed by the inverted reflected pulse.}
 
-\newpage
+#### (b) Open Circuit ($Z_L \to \infty$, $\Gamma = +1$)
 
-#### (ii) $25\,\Omega$ ($\Gamma = -1/3$)
+Theory: $V(B) = 2V_\text{inc} \approx 2\,\text{V}$; the reflected pulse returns to A with the same polarity, appearing as a second consecutive "ON" interval on Ch1. Scope signature: a same-polarity (positive) reflected pulse identifies a load above $Z_0$, here an open.
 
-Theory: $V(B) = V_\text{inc}(1 - 1/3) = 2/3\,\text{V} \approx 0.67\,\text{V}$. Reflected pulse at A is negative.
-
-![ ](assets/print_q1_25.png)
-
+![ ](assets/print_q1_OC.png)
 \nopagebreak[4]
 
-\figcap{Figure 3: Print 2 - $25\,\Omega$ - V(A)) shows small negative return during OFF cycle.}
+\figcap{Figure 3: Print 2 - Open circuit - Ch1 (yellow, V(A)) shows the positive reflected wave arriving as a second ON-state excursion.}
 
-\newpage
+#### (c) $50\,\Omega$ Matched ($\Gamma = 0$)
 
-#### (iii) $50\,\Omega$ Matched ($\Gamma = 0$)
-
-Theory: No reflection; $V(B) = V(A) = V_\text{inc}$.
+Theory: no reflection; $V(B) = V(A) = V_\text{inc}$. Scope signature: no reflected pulse at A, and identical pulses at A and B, identify a matched load $Z_L = Z_0$.
 
 ![ ](assets/print_q1_50.png)
 \nopagebreak[4]
 
 \figcap{Figure 4: Print 3 - $50\,\Omega$ matched - both channels identical (Pk-Pk(1) = Pk-Pk(2) = 1.09 V); no reflected wave.}
 
-#### (iv) $160\,\Omega$ ($\Gamma = +0.524$)
+#### (d) $25\,\Omega$ ($\Gamma = -1/3$)
 
-Theory: $V(B) = V_\text{inc}(1 + 0.524) = 1.524\,\text{V}$.
+Theory: $V(B) = V_\text{inc}(1 - 1/3) = 2/3\,\text{V} \approx 0.67\,\text{V}$; the reflected pulse at A is negative. Scope signature: a small negative reflected pulse identifies a resistive load below $Z_0$.
+
+![ ](assets/print_q1_25.png)
+\nopagebreak[4]
+
+\figcap{Figure 5: Print 4 - $25\,\Omega$ - V(A) shows a small negative return during the OFF cycle.}
+
+#### (e) $160\,\Omega$ ($\Gamma = +0.524$)
+
+Theory: $V(B) = V_\text{inc}(1 + 0.524) = 1.524\,\text{V}$. Scope signature: a small positive reflected pulse identifies a resistive load above $Z_0$.
 
 ![ ](assets/print_q1_160.png)
 \nopagebreak[4]
 
-\figcap{Figure 5: Print 4 - $160\,\Omega$ - Ch2 (green) steady above 1 V; Ch1 (yellow) shows positive return during OFF cycle.}
+\figcap{Figure 6: Print 5 - $160\,\Omega$ - Ch2 (green) steady above 1 V; Ch1 (yellow) shows a positive return during the OFF cycle.}
 
-\newpage
+#### (f) Series R-L ($R = 100\,\Omega$, $L = 1\,\mu\text{H}$)
 
-#### (v) Open Circuit ($Z_L \to \infty$, $\Gamma = +1$)
-
-Theory: $V(B) = 2V_\text{inc} \approx 2\,\text{V}$; reflected pulse returns to A with same polarity, appearing as a second consecutive "ON" interval on Ch1.
-
-![ ](assets/print_q1_OC.png)
-\nopagebreak[4]
-
-\figcap{Figure 6: Print 5 - Open circuit - Ch1 (yellow, V(A)) shows the positive reflected wave arriving as a second ON-state excursion.}
-
-#### (vi) Series R-L ($R = 100\,\Omega$, $L = 1\,\mu\text{H}$)
-
-At $t = 0^+$ the inductor acts as OC ($\Gamma \to +1$, $V(B) \to 2\,\text{V}$). In steady state (L \to  wire): $\Gamma_\text{ss} = +1/3$, $V(B) \to 4/3\,\text{V}$. Time constant $\tau = L/(R + Z_0) = 1\,\mu\text{H}/150\,\Omega \approx 6.7\,\text{ns}$.
+At $t = 0^+$ the inductor acts as an open circuit ($\Gamma \to +1$, $V(B) \to 2\,\text{V}$). In steady state ($L \to$ wire): $\Gamma_\text{ss} = +1/3$, $V(B) \to 4/3\,\text{V}$. Time constant $\tau = L/(R + Z_0) = 1\,\mu\text{H}/150\,\Omega \approx 6.7\,\text{ns}$. Scope signature: an initial positive overshoot decaying to a positive steady level identifies a series R-L load.
 
 ![ ](assets/print_q1_RL.png)
 \nopagebreak[4]
 
-\figcap{Figure 7: Print 6 - Series RL - V(B) shows initial peak followed by exponential decay to $4/3\,\text{V}$, confirming steady-state $\Gamma = +1/3$.}
+\figcap{Figure 7: Print 6 - Series RL - V(B) shows an initial peak followed by exponential decay to $4/3\,\text{V}$, confirming steady-state $\Gamma = +1/3$.}
 
-#### (vii) Series R-C ($R = 100\,\Omega$, $C = 1\,\mu\text{F}$)
+#### (g) Series R-C ($R = 100\,\Omega$, $C = 1\,\mu\text{F}$)
 
-At $t = 0^+$ the capacitor acts as SC ($\Gamma = +1/3$, $V(B) = 4/3\,\text{V}$). In steady state ($C \to$ OC): $\Gamma \to +1$, $V(B) \to 2\,\text{V}$. However, $\tau = (R + Z_0) \times C = 150 \times 10^{-6} = 150\,\mu\text{s} \gg T_\text{pulse} = 200\,\text{ns}$, so the waveform window is too short to observe the charge-up; $V(B)$ remains essentially flat at $\approx 4/3\,\text{V}$.
+At $t = 0^+$ the capacitor acts as a short circuit ($\Gamma = +1/3$, $V(B) = 4/3\,\text{V}$). In steady state ($C \to$ open): $\Gamma \to +1$, $V(B) \to 2\,\text{V}$. However, $\tau = (R + Z_0) \times C = 150 \times 10^{-6} = 150\,\mu\text{s} \gg T_\text{pulse} = 200\,\text{ns}$, so the window is too short to observe the charge-up; $V(B)$ remains essentially flat at $\approx 4/3\,\text{V}$. Scope signature: a positive reflected level that stays flat over the pulse identifies a series R-C load with $\tau \gg T_\text{pulse}$.
 
 ![ ](assets/print_q1_RC.png)
 \nopagebreak[4]
 
 \figcap{Figure 8: Print 7 - Series RC - reflected amplitude at A, corresponding to $\Gamma_\text{ss,init} = +1/3$.}
-
-\newpage
 
 ### Q1.1.2 - Measured Reflection Coefficients
 
@@ -118,17 +107,23 @@ Steady-state amplitudes were read from the oscilloscope and $\Gamma_\text{meas} 
 
 | Load | $V_\text{inc}$ [V] | $|V_\text{ref}|$ [V] | $\Gamma_\text{meas}$ | $\Gamma_\text{theory}$ | $|\%\,\text{err}|$ |
 |:-----|:---:|:---:|:---:|:---:|:---:|
-| SC | 1.038 | 1.000 | $-0.964$ | $-1.000$ | 3.6% |
-| $25\,\Omega$ | 1.013 | 0.350 | $-0.346$ | $-0.333$ | 3.8% |
-| $50\,\Omega$ | 1.090 | 0.000 | $0.000$ | $0.000$ | 0% |
-| $160\,\Omega$ | 1.013 | 0.525 | $+0.519$ | $+0.524$ | 1.0% |
-| OC | 1.050 | 1.013 | $+0.964$ | $+1.000$ | 3.6% |
-| $100\,\Omega + 1\,\mu\text{H}$ (steady) | 1.013 | 0.338 | $+0.333$ | $+0.333$ | 0.1% |
-| $100\,\Omega + 1\,\mu\text{F}$ (steady) | 1.113 | 0.388 | $+0.348$ | $+0.333$ | 4.5% |
+| (a) SC | 1.038 | 1.000 | $-0.964$ | $-1.000$ | 3.6% |
+| (b) OC | 1.050 | 1.013 | $+0.964$ | $+1.000$ | 3.6% |
+| (c) $50\,\Omega$ | 1.090 | 0.000 | $0.000$ | $0.000$ | 0% |
+| (d) $25\,\Omega$ | 1.013 | 0.350 | $-0.346$ | $-0.333$ | 3.8% |
+| (e) $160\,\Omega$ | 1.013 | 0.525 | $+0.519$ | $+0.524$ | 1.0% |
+| (f) $100\,\Omega + 1\,\mu\text{H}$ (steady) | 1.013 | 0.338 | $+0.333$ | $+0.333$ | 0.1% |
+| (g) $100\,\Omega + 1\,\mu\text{F}$ (steady) | 1.113 | 0.388 | $+0.348$ | $+0.333$ | 4.5% |
 
 **Discussion:** All results agree well with theory. The SC and OC magnitudes fall slightly below $\pm 1$ due to the non-zero SC resistance and finite OC parasitic capacitance. Both reactive loads (RL, RC) were measured at steady state, confirming $\Gamma_\text{ss} = +1/3$ as expected for a $100\,\Omega$ resistive termination. The RC case shows slightly larger error (4.5%) because $\tau \gg T_\text{pulse}$: the capacitor has not discharged between pulses, slightly raising the average level. All results are consistent with the theory.
 
-\newpage
+### Q1.2 - Waveforms at A and B for Open, Short, and Matched Loads
+
+**(a) Open load (Figure 3, $\Gamma = +1$):** At B the incident and fully reflected waves add in phase, so $V(B)$ rises to about twice the incident level, $V(B) \approx 2V_\text{inc} \approx 2\,\text{V}$. At A the reflected pulse returns with the same (positive) polarity after a round trip $2t_d$, appearing during the OFF interval as a second positive step; A therefore shows the incident pulse followed by a delayed positive return.
+
+**(b) Short load (Figure 2, $\Gamma = -1$):** At B the reflected wave cancels the incident wave, so $V(B) \approx 0$ apart from brief spikes at the switching edges. At A the reflected pulse returns inverted (negative polarity) after $2t_d$, appearing during the OFF interval as a negative dip below the baseline.
+
+**(c) $50\,\Omega$ matched load (Figure 4, $\Gamma = 0$):** There is no reflected wave. $V(A)$ and $V(B)$ are identical clean pulses, separated only by the one-way cable propagation delay $t_d$, and no return pulse appears at A during the OFF interval. This is the signature of a perfectly matched line.
 
 ### Q1.3 - Reactive Properties of the Decade Resistance Box
 
@@ -142,8 +137,6 @@ The decade resistance box was used as the termination load (replacing the standa
 The decade box winding creates a series $R$-$L$ network at each element. When the pulse wavefront arrives at T-Junction B, the inductive parasitics cause transient overshoot and damped oscillations on V(B) before settling to the DC-determined reflection coefficient. The oscillation frequency is $f_\text{osc} = 1/(2\pi\sqrt{L_\text{par}C_\text{line}})$ where $C_\text{line}$ is the coaxial cable capacitance.
 
 This demonstrates that at high frequencies or fast pulse edges, the distributed and parasitic elements of physical components must be considered; the decade box is not a purely resistive load in pulsed applications.
-
-\newpage
 
 ### Q1.4 - Effect of Cable Length on Propagation Delay
 
@@ -159,6 +152,8 @@ With the $1\,\text{m}$ cable only, V(A) and V(B) were nearly coincident (delay $
 $$\Delta t_{6\,\text{m}} = 28\,\text{ns}$$
 
 The characteristic impedance is unaffected by cable length: both cables are $50\,\Omega$ RG58/U and the reflection coefficient is identical for both lengths. The delay difference confirms that the distributed model is correct: information travels at a finite velocity $v_p < c$ along the cable.
+
+**Difference between the signals in Q1.3 and Q1.4:** The two captures isolate two different effects. In Q1.3 both halves of the screen keep the same cable configuration and a matched termination, and only the load is changed (a clean $50\,\Omega$ resistor versus the decade box); the difference seen there is therefore a load-dependent reactive effect, namely the parasitic-inductance overshoot and ringing introduced by the decade box on $V(B)$. In Q1.4 the load is the same clean $50\,\Omega$ termination in both halves, and only the cable length between A and B is changed ($6\,\text{m}$ versus $1\,\text{m}$); the difference there is a pure transmission-line property, namely the propagation delay $\Delta t$ between $V(A)$ and $V(B)$, which shrinks with the shorter cable while the pulse shape stays clean because the load remains matched. In short, Q1.3 varies the load and reveals a reactive (parasitic) effect, whereas Q1.4 varies the line length and reveals a propagation-delay effect.
 
 ### Q1.5 - Phase Velocity and Characteristic Impedance
 
@@ -176,7 +171,7 @@ $$V_A = V_\text{oc} \cdot \frac{Z_0}{Z_s + Z_0} \implies Z_0 = Z_s \cdot \frac{V
 
 In practice the measured amplitude at A with the $50\,\Omega$ load was $V_A = 1.0215\,\text{V}$ (not the nominal $1\,\text{V}$), reflecting a cable characteristic impedance slightly above $50\,\Omega$:
 
-$$Z_0 = 50 \cdot \frac{1.0215}{2.000 - 1.0215} = 50 \cdot \frac{1.0215}{0.9785} = \mathbf{52.2\,\Omega}$$
+$$Z_0 = 50 \cdot \frac{1.0215}{2.000 - 1.0215} = 50 \cdot \frac{1.0215}{0.9785} = 52.2\,\Omega$$
 
 The measured $Z_0 = 52.2\,\Omega$ is within the typical $\pm5\%$ tolerance of RG58/U cable. The result is consistent with a near-zero reflection coefficient at the $50\,\Omega$ load.
 
@@ -186,16 +181,16 @@ The 5.9% over-estimate of $v_p$ is consistent with the RG58/U polyethylene diele
 
 ## Q2 - Resistive Power Splitter
 
-The power splitter uses $R_1 = R_3 = 16\,\Omega$ (series arms) and $R_2 = 68\,\Omega$ (shunt between the two branches). Circuit is shown in Figure 11.
+In this first measurement only one of the two output branches is physically built. The splitter network uses $R_1 = 16\,\Omega$ (input series arm) and $R_3 = 16\,\Omega$ (series arm of the real branch, loaded by $50\,\Omega$). The second branch is not built: it is emulated by a single mockup resistor $R_2 = 68\,\Omega$, which stands in for that branch's series arm plus its load ($16 + 50 \approx 68\,\Omega$). $R_2$ is therefore not a shunt element of the splitter network; it is a lumped stand-in for the whole second branch. Circuit is shown in Figure 11.
 
 ![ ](assets/circ_q2.png)
 \nopagebreak[4]
 
 \figcap{Figure 11: Power splitter experimental circuit.}
 
-**Input impedance:** Seen from the source, $R_1$ is in series with the parallel combination of the shunt $R_2$ and the loaded output arm ($R_\text{tot} = R_3 + R_\text{in} = 16 + 50 = 66\,\Omega$):
+**Input impedance:** Seen from the source, $R_1$ is in series with the parallel combination of the real loaded branch ($R_\text{branch} = R_3 + R_\text{load} = 16 + 50 = 66\,\Omega$) and the mockup branch $R_2 = 68\,\Omega$:
 
-$$Z_\text{in} = R_1 + (R_\text{tot} \| R_2) = 16 + \frac{66 \times 68}{66 + 68} = 16 + 33.5 = 49.5\,\Omega \approx 50\,\Omega \checkmark$$
+$$Z_\text{in} = R_1 + (R_\text{branch} \| R_2) = 16 + \frac{66 \times 68}{66 + 68} = 16 + 33.5 = 49.5\,\Omega \approx 50\,\Omega$$
 
 ### Q2.1 - Reflection Coefficient
 
@@ -232,11 +227,11 @@ $$P_\text{load} = \frac{(0.531)^2}{2 \times 50} = 2.82\,\text{mW}$$
 
 ### Q2.3 - Is This an Ideal Power Splitter?
 
-**No.** The circuit achieves two properties of an ideal equal-split divider — input matching and symmetric power division — but fails on two fundamental criteria:
+**No.** The circuit achieves two properties of an ideal equal-split divider (input matching and symmetric power division) but fails on two fundamental criteria:
 
 **1. Significant insertion loss.** An ideal lossless 2-way splitter delivers $-3\,\text{dB}$ (50%) of input power to each output port. Here, $P_\text{in} = 10.25\,\text{mW}$ but each branch receives only $P_B = 2.82\,\text{mW}$ (27.5%), with the remaining $\approx 4.61\,\text{mW}$ (45%) dissipated in $R_1$, $R_2$, $R_3$. The resistive network is inherently lossy.
 
-**2. No port isolation.** In an ideal splitter (e.g., Wilkinson divider), the two output ports are mutually isolated — a signal injected at one output does not appear at the other. Here, the outputs are directly connected through $R_2$ and the $R_1$/$R_3$ arms, providing zero isolation.
+**2. No port isolation.** In an ideal splitter (e.g., the Wilkinson divider), the two output ports are mutually isolated, so a signal injected at one output does not appear at the other. In this purely resistive network the two output branches meet at the common splitter node through their series arms, with no isolating element between them, so the isolation is zero. (In the present single-branch measurement the second port is only the $R_2 = 68\,\Omega$ mockup, but the absence of isolation is a property of the resistive topology itself, not of the mockup.)
 
 **What it does satisfy:**
 
@@ -252,7 +247,7 @@ In conclusion, this is a **resistive voltage divider used as a power divider**, 
 
 \figcap{Figure 14: Print 11 - Q2.4.1 - Two branch measurement.}
 
-The power is equal on both branches since: (a) the circuit is symmetric, (b) the voltage at each output equals $V_\text{in} \times R_4/(R_3 + R_4)$, identical for both branches. The splitter total input impedance is $R_1 + 68\|68 = 16 + 34 = 50\,\Omega$ confirming the design.
+The power is equal on both branches since: (a) the circuit is symmetric, (b) the voltage at each output equals $V_\text{in} \times R_4/(R_3 + R_4)$, identical for both branches. With the mockup now replaced by a real second branch, both branches are identical $66\,\Omega$ arms, so the total input impedance is $R_1 + 66\|66 = 16 + 33 = 49\,\Omega \approx 50\,\Omega$, confirming the design.
 
 Yellow trace: $V(\text{new branch})$; green trace: $V(B)$. Both channels show identical amplitude, confirming equal power split.
 
@@ -271,10 +266,10 @@ $$P_\text{each} = \frac{V_B^2}{2 R} = \frac{(0.531)^2}{2 \times 50} = 2.82\,\tex
 | Input (A) | 1.013 | 10.25 |
 | Branch B | 0.531 | 2.82 |
 | New branch | 0.531 | 2.82 |
-| **Total to loads** | — | **5.64** |
-| Dissipated in resistors | — | 4.61 |
+| **Total to loads** | n/a | **5.64** |
+| Dissipated in resistors | n/a | 4.61 |
 
-The two output branches together consume 5.64 mW (55% of input power); the remaining 4.61 mW is dissipated in $R_1$, $R_2$, $R_3$. This is consistent with the resistive splitter design — equal split but with inherent resistive loss.
+The two output branches together consume 5.64 mW (55% of input power); the remaining 4.61 mW is dissipated in the splitter resistors. This is consistent with the resistive splitter design: equal split but with inherent resistive loss. Each real branch carries 2.82 mW, identical to the single branch measured with the $68\,\Omega$ mockup in Q2.2, and the reflection is unchanged from Q2.1; this confirms the mockup faithfully represented the second branch.
 
 \newpage
 
@@ -300,7 +295,7 @@ Voltage transmission: $V_\text{load}/V_A = 0.694$ (theoretical), i.e., $-3.17\,\
 ![ ](assets/print_q3_1_refl.png)
 \nopagebreak[4]
 
-\figcap{Figure 16: Print 12 - T-attenuator reflection measurement  - V(A) (yellow) and V(B) (green) with small positive reflected component on V(A); near-zero reflection confirms matched input impedance.}
+\figcap{Figure 16: Print 12 - T-attenuator reflection measurement - V(A) (yellow) and V(B) (green) with small positive reflected component on V(A); near-zero reflection confirms matched input impedance.}
 
 | Load | $V_\text{inc}$ [V] | $V_\text{ref}$ [V] | $\Gamma_\text{meas}$ | $\Gamma_\text{theory}$ |
 |:-----|:---:|:---:|:---:|:---:|
@@ -321,55 +316,54 @@ $$P_\text{in} = \frac{(1.013)^2}{100} = 10.25\,\text{mW}, \qquad P_\text{load} =
 
 $$\text{Attenuation} = \frac{P_\text{load}}{P_\text{in}} = \frac{4.90}{10.25} = 0.478 \approx 0.5 = -3.2\,\text{dB}$$
 
-Excellent agreement with the $-3\,\text{dB}$ design target (2.0% error on power).
+Excellent agreement with the $-3\,\text{dB}$ design target (2.0% error on power). This confirms the preliminary analysis (Q1.9), which predicted $P_\text{load}/P_\text{in} = 0.5$ for the T-attenuator.
 
-\newpage
+### Q3.3 - Resistor Values for 6 dB Attenuation
 
-### Q3.3 - Simultaneous V(A) and V(B) Measurement - Attenuation Verification
+For a symmetric T-attenuator matched to $Z_0 = 50\,\Omega$, the series arms $R_1$ and the shunt arm $R_2$ are set by the voltage attenuation ratio $k = V_\text{in}/V_\text{out} = 10^{A_\text{dB}/20}$:
 
-To directly verify the $-3\,\text{dB}$ attenuation, V(A) (input to the T-attenuator, at the T-junction) and V(B) (output, across the $50\,\Omega$ load) were measured simultaneously on both scope channels.
+$$R_1 = Z_0\,\frac{k-1}{k+1}, \qquad R_2 = Z_0\,\frac{2k}{k^2 - 1}$$
 
-![ ](assets/print_q3_3_meas.png)
-\nopagebreak[4]
+For $A_\text{dB} = 6\,\text{dB}$ the voltage ratio is $k = 10^{6/20} = 1.995 \approx 2$ (a power ratio of $4$). Substituting $k = 2$ and $Z_0 = 50\,\Omega$:
 
-\figcap{Figure 17: Simultaneous V(A) and V(B) measurement. Ch1 (top): V(A) $\approx 1.025\,\text{V}$; Ch2 (bottom): V(B) = 700 mV (cursor Y2 = 700 mV). The voltage ratio V(A)/V(B) $= 1.025/0.700 \approx \sqrt{2}$ directly confirms $-3\,\text{dB}$ attenuation.}
+$$R_1 = 50 \cdot \frac{2 - 1}{2 + 1} = \frac{50}{3} \approx 16.7\,\Omega$$
 
-**Voltage ratio:**
+$$R_2 = 50 \cdot \frac{2 \times 2}{2^2 - 1} = 50 \cdot \frac{4}{3} \approx 66.7\,\Omega$$
 
-$$\frac{V_A}{V_\text{load}} = \frac{1.025}{0.700} = 1.464 \approx \sqrt{2} = 1.414 \quad (\%\,\text{err} = 3.5\%)$$
+Check: $Z_\text{in} = R_1 + R_2\|(R_1 + Z_L) = 16.7 + 66.7\|66.7 = 16.7 + 33.3 = 50\,\Omega$, so the network stays matched, and the matched voltage transfer is $V_\text{out}/V_\text{in} = 1/k = 0.5$, i.e. exactly $-6\,\text{dB}$. Compared with the $-3\,\text{dB}$ design ($R_1 = 8.58\,\Omega$, $R_2 = 141.4\,\Omega$), a larger attenuation requires larger series arms and a smaller shunt arm.
 
-This confirms $20\log_{10}(1/1.464) = -3.3\,\text{dB} \approx -3\,\text{dB}$ in voltage, consistent with $-3.2\,\text{dB}$ from the power ratio in Q3.2.
-
-### Q3.4 - Input Impedance from $V_A/V_\text{load}$ Ratio
+### Q3.4 - Input Impedance at the Cable Input: Experiment vs. Theory
 
 **Setup:** signal generator with $Z_s = 50\,\Omega$ output impedance, $V_\text{pp} = 1\,\text{V}$. The $6\,\text{m}$ cable is matched ($Z_\text{cable} = Z_0 = 50\,\Omega$), so the source sees the T-attenuator input impedance directly.
 
-**From the power-balance approach:**
+**Theoretical (from the resistor network):** using the built values $R_1 = 10\,\Omega$, $R_2 = 150\,\Omega$, $Z_L = 50\,\Omega$, as computed at the start of Q3,
 
-$$P_\text{load} = \frac{V_\text{load}^2}{2R_\text{load}} = \frac{(0.700)^2}{100} = 4.90\,\text{mW}$$
+$$R_\text{in,theory} = R_1 + R_2\|(R_1 + Z_L) = 10 + \frac{150 \times 60}{210} = 10 + 42.9 = 52.9\,\Omega$$
 
-Since the attenuator achieves $-3\,\text{dB}$ ($P_\text{load} = P_\text{in}/2$):
+**Experimental (from power balance):** the load power and, using the measured $-3\,\text{dB}$ ($P_\text{load} = P_\text{in}/2$), the input power are
 
-$$P_\text{in} = 2 \times P_\text{load} = 9.80\,\text{mW}$$
+$$P_\text{load} = \frac{V_\text{load}^2}{2R_\text{load}} = \frac{(0.700)^2}{100} = 4.90\,\text{mW}, \qquad P_\text{in} = 2 P_\text{load} = 9.80\,\text{mW}$$
 
-$$R_\text{in} = \frac{V_A^2}{2 P_\text{in}} = \frac{(1.025)^2}{2 \times 9.80 \times 10^{-3}} = \frac{1.051}{0.0196} \approx 53.6\,\Omega$$
+so the measured input resistance is
 
-**Alternatively, from the voltage divider:** Since Q3.1 confirms the line is matched, the open-circuit source voltage is $V_s = 2 V_A = 2.05\,\text{V}$, giving:
+$$R_\text{in,meas} = \frac{V_A^2}{2 P_\text{in}} = \frac{(1.025)^2}{2 \times 9.80 \times 10^{-3}} = \frac{1.051}{0.0196} \approx 53.6\,\Omega$$
 
-$$R_\text{in} = Z_s \cdot \frac{V_A}{V_s - V_A} = 50 \times \frac{1.025}{1.025} = 50\,\Omega$$
+**Comparison:** the measured $R_\text{in,meas} = 53.6\,\Omega$ agrees with the theoretical $R_\text{in,theory} = 52.9\,\Omega$ to within
 
-Both approaches are consistent: $R_\text{in} \approx 50$--$54\,\Omega$ (design: $52.9\,\Omega$). The small deviation from exactly $50\,\Omega$ is due to the slightly non-standard component values ($R_1 = 10\,\Omega$, $R_2 = 150\,\Omega$ vs. optimal $8.58\,\Omega$, $141.4\,\Omega$).
+$$\%\,\text{error} = \left|\frac{53.6 - 52.9}{52.9}\right| \times 100\% = 1.3\%$$
+
+confirming $R_\text{in} \approx Z_0 = 50\,\Omega$ and a matched input. The small offset above $50\,\Omega$ is due to the slightly non-standard component values used. That is, $R_1 = 10\,\Omega$, $R_2 = 150\,\Omega$, instead of the optimal values $8.58\,\Omega$, $141.4\,\Omega$, which we found in the preliminary report (Q1.9) to be ideal for $-3\,\text{dB}$ attenuation.
 
 \newpage
 
 ## Q4 - LC $\pi$-Type Low-Pass Filter
 
-The filter uses $L_3 = 1\,\mu\text{H}$, $C_6 = C_7 = 821\,\text{pF}$ (nominal $815\,\text{pF}$), $R_7 = 50\,\Omega$, with $T_\text{1m}$ transmission lines at both ports. Circuit is shown in Figure 18.
+The filter uses $L_3 = 1\,\mu\text{H}$, $C_6 = C_7 = 821\,\text{pF}$, $R_7 = 50\,\Omega$, with $T_\text{1m}$ transmission lines at both ports. The design value of the capacitors is $815\,\text{pF}$; we used $821\,\text{pF}$ because that was the closest value available in the lab. Circuit is shown in Figure 17.
 
 ![ ](assets/circ_q4.png)
 \nopagebreak[4]
 
-\figcap{Figure 18: LC $\pi$ low-pass filter circuit - inside the transmission line}
+\figcap{Figure 17: LC $\pi$ low-pass filter circuit - inside the transmission line}
 
 **Theoretical resonant frequency with $821\,\text{pF}$:**
 
@@ -383,11 +377,20 @@ $$x^2 + x\!\left(\frac{1}{Q^2} - 2\right) - 1 = 0, \quad x = \left(\frac{\omega_
 
 $$f_{-3\text{dB},\text{theory}} = 1.42 \times 5.56 \approx 7.9\,\text{MHz}$$
 
+As a qualitative overview before the detailed point-by-point sweep, Figure 18 shows a continuous wideband logarithmic frequency sweep of the filter across the same band. This capture is not required by the report; it was taken only to visualize the expected behaviour (pass-band, cutoff, and stop-band).
+
+![ ](assets/print_q4_debug.png){width=62%}
+\nopagebreak[4]
+
+\figcap{Figure 18: Wideband oscilloscope sweep 0.1-20 MHz. Upper envelope (yellow, Ch1): $V_A$ at the input T-junction, showing the frequency-dependent reflection/absorption behavior. Lower envelope (green, Ch2): filtered output $V_\text{out}$, showing the filter pass-band ($\sim 0$--$8\,\text{MHz}$) and deep stop-band attenuation above.}
+
 \newpage
 
-### Q4.1.1 - Frequency Response (Manual Sweep)
+### Q4.1 - Manual Frequency Sweep
 
-$V_\text{in} = 3.2\,\text{Vpp}$ held constant. Gain $= V_\text{out}/V_\text{in}$. Note: $C = 821\,\text{pF}$ (vs. designed $815\,\text{pF}$).
+#### Q4.1.1 - Gain vs. Frequency (Logarithmic Scale)
+
+$V_\text{in} = 3.2\,\text{Vpp}$ held constant. Gain $= V_\text{out}/V_\text{in}$. As noted above, $C = 821\,\text{pF}$ was used (the closest available value to the designed $815\,\text{pF}$).
 
 | $f$ [MHz] | $V_A$ [Vpp] | $V_\text{out}$ [Vpp] | Gain [dB] |
 |:---:|:---:|:---:|:---:|
@@ -407,7 +410,7 @@ $V_\text{in} = 3.2\,\text{Vpp}$ held constant. Gain $= V_\text{out}/V_\text{in}$
 | 10   | 0.50 | 1.05 | -9.68 |
 | 11   | 1.33 | 0.68 | -13.45 |
 | 20   | 5.00 | 0.119 | -28.59 |
-| 30   | — | 0.112 | -29.04 |
+| 30   | n/a | 0.112 | -29.04 |
 
 ![ ](assets/q4_gain_plot.png)
 \nopagebreak[4]
@@ -418,23 +421,12 @@ $V_\text{in} = 3.2\,\text{Vpp}$ held constant. Gain $= V_\text{out}/V_\text{in}$
 
 - **Pass-band** ($f < 4\,\text{MHz}$): Gain $\approx 0\,\text{dB}$, filter transparent.
 - **Resonant gain peak** at $5.6$--$6\,\text{MHz}$: gain recovers to $\approx -0.65\,\text{dB}$ after the local minimum at $\sim 4\,\text{MHz}$, consistent with underdamped 2nd-order response ($Q = 1.43 > 1/\sqrt{2}$).
-- **Measured $f_{-3\text{dB}} = 8.3\,\text{MHz}$** vs. theoretical $7.9\,\text{MHz}$ — 5.1% error.
+- **Measured $f_{-3\text{dB}} = 8.3\,\text{MHz}$** vs. theoretical $7.9\,\text{MHz}$, a 5.1% error.
 - **Stop band**: $-9.7\,\text{dB}$ at $10\,\text{MHz}$, $-13.5\,\text{dB}$ at $11\,\text{MHz}$, $-28.6\,\text{dB}$ at $20\,\text{MHz}$, $-29.0\,\text{dB}$ at $30\,\text{MHz}$.
 
 The small increase in $C$ from $815\,\text{pF}$ to $821\,\text{pF}$ (0.7%) has negligible effect on $f_0$. The measured $f_{-3\text{dB}}$ is 5.1% higher than theory, likely due to parasitic inductance and capacitance from the filter PCB and connectors slightly modifying the effective $Q$.
 
-\newpage
-
-### Q4 — Wideband Frequency Sweep (Logarithmic Scale, 0.1--20 MHz)
-
-![ ](assets/print_q4_debug.png)
-\nopagebreak[4]
-
-\figcap{Figure 20: Wideband oscilloscope sweep 0.1-20 MHz. Upper envelope (yellow, Ch1): $V_A$ at the input T-junction, showing the frequency-dependent reflection/absorption behaviour. Lower envelope (green, Ch2): filtered output $V_\text{out}$, showing the filter pass-band ($\sim 0$--$8\,\text{MHz}$) and deep stop-band attenuation above.}
-
-\newpage
-
-### Q4.1.2 - Reflection Coefficient vs. Frequency
+#### Q4.1.2 - Reflection Coefficient vs. Frequency (Logarithmic Scale)
 
 The reflection coefficient is computed from the measured $V_A$ using:
 
@@ -460,24 +452,24 @@ $$\Gamma = \frac{V_A}{V_\text{in}} - 1 = \frac{V_A}{3.2} - 1$$
 ![ ](assets/q4_refl_plot.png)
 \nopagebreak[4]
 
-\figcap{Figure 21: Q4.1.2 - reflection coefficient $\Gamma$ vs. frequency (0.1--30 MHz). Red curve: filter-only ABCD theory (monotonically negative, no cable effects). Teal circles: measured data. The sign oscillations in the measured curve are caused by cable standing-wave resonances at $f_{\lambda/4}=8.9\,\text{MHz}$, $f_{\lambda/2}=17.8\,\text{MHz}$, and $3\lambda/4=26.7\,\text{MHz}$ — not captured by the filter-only theory.}
+\figcap{Figure 20: Q4.1.2 - reflection coefficient $\Gamma$ vs. frequency (0.1--30 MHz). Red curve: filter-only ABCD theory (monotonically negative, no cable effects). Teal circles: measured data. The sign oscillations in the measured curve are caused by cable standing-wave resonances at $f_{\lambda/4}=8.9\,\text{MHz}$, $f_{\lambda/2}=17.8\,\text{MHz}$, and $3\lambda/4=26.7\,\text{MHz}$, not captured by the filter-only theory.}
 
-**Explanation of the $\Gamma$ sign flip near 10 MHz and sign reversal at 20 MHz:**
+### Q4.2 - Frequency Dependence of the Reflection Coefficient (Comparison with Theory)
 
-In the **pass-band** ($f \ll f_c$), the filter presents $Z_\text{in} \approx 50\,\Omega$ (matched), giving $\Gamma \approx 0$.
+The measured $\Gamma(f)$ is compared with the filter-only ABCD theory (red curve, Figure 20). The two agree in the pass-band but diverge increasingly in the stop-band. Two effects combine.
 
-As frequency increases into the **stop-band**, the shunt capacitor $C_6$ dominates the filter input, presenting a low-impedance path to ground ($Z_C = 1/(\omega C) \ll 50\,\Omega$). This makes the filter behave like a near-short-circuit load, $\Gamma \to -1$, and $V_A \to 0$. The measured minimum $V_A = 0.50\,\text{V}$ at $10\,\text{MHz}$ gives $\Gamma = -0.844$.
+**Filter mismatch sets the magnitude of $\Gamma$.** In the pass-band ($f \ll f_c$) the filter is matched, $Z_\text{in} \approx 50\,\Omega$, so $\Gamma \approx 0$ (return loss $> 20\,\text{dB}$ at $0.1$ to $1\,\text{MHz}$). As the frequency enters the stop-band the filter becomes strongly reactive (the shunt capacitor $C_6$ progressively bypasses the input), reflecting most of the incident power, so $|\Gamma|$ grows toward $1$. This growth of the magnitude is the trend the filter-only theory reproduces.
 
-The precise dip at $\sim 10\,\text{MHz}$ (rather than monotonically approaching $-1$) is a **$\lambda/4$ transmission-line resonance** on the $6\,\text{m}$ cable:
+**The 6 m cable rotates the phase of $\Gamma$, so its apparent sign oscillates.** A lossless line leaves the magnitude of the reflection coefficient unchanged but rotates its phase,
 
-$$f_{\lambda/4} = \frac{v_p}{4L} = \frac{2.14 \times 10^8}{4 \times 6} = 8.9\,\text{MHz}$$
+$$\Gamma_A = \Gamma_\text{filter}\,e^{-2j\beta L}, \qquad \beta L = \frac{2\pi L}{v_p}\,f,$$
 
-At this frequency, the $6\,\text{m}$ cable is a quarter-wavelength long. A $\lambda/4$ transformer **inverts** the low impedance of the capacitive filter input into a **high impedance** at node A. This drives the voltage at A toward zero, producing the observed minimum $V_A$ and maximum $|\Gamma|$ near $9$--$10\,\text{MHz}$.
+so the electrical length $\beta L$ grows with frequency. We infer $\Gamma$ from the measured amplitude through $\Gamma = V_A/V_\text{in} - 1 = |1 + \Gamma_A| - 1$, which is negative when the rotated $\Gamma_A$ points toward $-1$ (node A near a voltage minimum, $V_A < V_\text{in}$) and positive when it points toward $+1$ (node A near a voltage maximum, $V_A > V_\text{in}$). The phase $2\beta L$ advances by $180^\circ$ each time the cable grows by a quarter wavelength, i.e. every
 
-The subsequent **sign reversal** at $\sim 17$--$20\,\text{MHz}$ is a **$\lambda/2$ resonance**:
+$$\Delta f = \frac{v_p}{4L} = \frac{2.14 \times 10^8}{4 \times 6} \approx 8.9\,\text{MHz},$$
 
-$$f_{\lambda/2} = \frac{v_p}{2L} = \frac{2.14 \times 10^8}{2 \times 6} = 17.8\,\text{MHz}$$
+so the apparent sign of $\Gamma$ reverses roughly every $9\,\text{MHz}$. The standing-wave landmarks on the $6\,\text{m}$ cable are thus $f_{\lambda/4} \approx 8.9\,\text{MHz}$, $f_{\lambda/2} \approx 17.8\,\text{MHz}$, and $f_{3\lambda/4} \approx 26.7\,\text{MHz}$.
 
-At $\lambda/2$, the cable repeats the load impedance at the measurement point. The highly reactive filter load (dominated by $C_6$ shunting to ground) combined with the $\lambda/2$ standing-wave causes **constructive interference** at node A, boosting $V_A$ well above $V_\text{in}$ ($V_A = 5.0\,\text{V} > V_\text{in} = 3.2\,\text{V}$ at $20\,\text{MHz}$). This makes $\Gamma = V_A/3.2 - 1 = +0.56$ positive. This is a pure standing-wave artifact of the transmission-line measurement setup, not a property of the filter itself.
+This is exactly the measured behaviour: a deep negative excursion appears near the first resonance ($V_A = 0.50\,\text{V}$, $\Gamma = -0.844$ at $10\,\text{MHz} \approx f_{\lambda/4}$, node A near a voltage minimum), followed by positive excursions at higher frequencies, where the phase has rotated and the mismatch envelope is larger ($V_A = 5.0\,\text{V}$, $\Gamma = +0.563$ at $20\,\text{MHz}$; $V_A = 5.9\,\text{V}$, $\Gamma = +0.844$ at $30\,\text{MHz}$, both with $V_A > V_\text{in} = 3.2\,\text{V}$, node A near a voltage maximum).
 
-The pattern repeats at higher-order resonances ($30\,\text{MHz} \approx 3\lambda/4$), confirming the cable resonance origin. The measured $\Gamma = +0.844$ at $30\,\text{MHz}$ mirrors the $|\Gamma| = 0.844$ minimum at $10\,\text{MHz}$ (another odd-quarter-wavelength resonance), supporting this interpretation.
+**Comparison with theory.** The filter-only ABCD model contains no cable, so it predicts a smooth, monotonic $\Gamma$ with no sign reversals. The oscillating sign in the measurement is therefore a standing-wave artifact of the $6\,\text{m}$ transmission line in the measurement setup, not a property of the filter itself. The fact that the excursions line up with the cable's $\lambda/4$, $\lambda/2$, and $3\lambda/4$ resonances confirms their cable origin.

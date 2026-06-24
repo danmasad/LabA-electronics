@@ -20,7 +20,14 @@
 
 % --- Colours.
 \usepackage{xcolor}
-\definecolor{figcap}{HTML}{0B5FB0}   % blue used for figure captions
+\definecolor{figcap}{HTML}{0B5FB0}   % blue used for italic "*Figure N: ...*" captions (center-images.lua)
+\definecolor{labteal}{HTML}{006b73}  % teal used for \figcap{...} in report YAML / markdown
+\newcommand{\figcap}[1]{\begin{center}\textcolor{labteal}{\textit{#1}}\end{center}}
+
+% --- Subsubsection headings indented 2em (matches Obsidian export / report YAML).
+\makeatletter
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{2em}{-3.25ex plus -1ex minus -.2ex}{1.5ex plus .2ex}{\normalfont\normalsize\bfseries}}
+\makeatother
 
 % --- Footer "-- N of M --", centered, on every page (matches the reference).
 \usepackage{fancyhdr}
@@ -39,10 +46,22 @@
   \fancyfoot[C]{\labfooter}%
 }
 
-% --- Keep a heading on the same page as the block (table/figure/paragraph)
-%     that follows it, instead of stranding it at the bottom of a page.
+% --- Keep headings, figures, and paragraphs together across page breaks.
 \usepackage{needspace}
 \usepackage{etoolbox}
-\pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
-\pretocmd{\subsection}{\Needspace{8\baselineskip}}{}{}
-\pretocmd{\subsubsection}{\Needspace{6\baselineskip}}{}{}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom
+
+% --- Keep bullet/numbered lists intact: do not break between a list and its
+%     lead-in line, nor between individual items.
+\makeatletter
+\@beginparpenalty=9999
+\@itempenalty=9999
+\makeatother
+\pretocmd{\section}{\Needspace{10\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{10\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{8\baselineskip}}{}{}
+\pretocmd{\paragraph}{\Needspace{8\baselineskip}}{}{}
+\pretocmd{\subparagraph}{\Needspace{6\baselineskip}}{}{}
