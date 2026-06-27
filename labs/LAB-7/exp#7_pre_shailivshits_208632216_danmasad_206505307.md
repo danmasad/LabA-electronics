@@ -8,11 +8,11 @@ header-includes:
 - \makeatother
 ---
 
-# Lab 7: Operational Amplifiers — Preliminary Report
+# Lab 7: Operational Amplifiers (Preliminary Report)
 
 **Students:** Shai Livshits · 208632216 &nbsp;|&nbsp; Dan Masad · 206505307
 **Date:** June 26, 2026
-**Course:** Lab A — Electronics, TAU Faculty of Engineering, Semester B 2025-2026
+**Course:** Lab A Electronics, TAU Faculty of Engineering, Semester B 2025-2026
 
 ---
 
@@ -86,7 +86,7 @@ We use our assigned numerical values $A = \dfrac{\mathrm{DEF}}{100} = \dfrac{307
 | $V_{pp}$ | $2A$ | $6.14\,\mathrm{V}$ |
 | $V_\text{RMS}$ | $\sqrt{\dfrac{A^2}{2} + B^2}$ | $10.233\,\mathrm{V}$ |
 
-Note: $V_\text{RMS}$ is always non-negative ($V_\text{RMS} \geq 0$) even when $V_\text{mean} < 0$, because it is the root of the mean-square. The sign of $V_\text{mean}$ does not affect $V_\text{RMS}$ — both §3.2 and §3.3 give the same $V_\text{RMS}=10.233\,\mathrm{V}$.
+Note: $V_\text{RMS}$ is always non-negative ($V_\text{RMS} \geq 0$) even when $V_\text{mean} < 0$, because it is the root of the mean-square. The sign of $V_\text{mean}$ does not affect $V_\text{RMS}$, both Q3.2 and Q3.3 give the same $V_\text{RMS}=10.233\,\mathrm{V}$.
 
 \newpage
 
@@ -94,11 +94,11 @@ Note: $V_\text{RMS}$ is always non-negative ($V_\text{RMS} \geq 0$) even when $V
 
 ### 4.1 Non-Ideal Model of Figure 2 (Assume $V_{out} = 216\,\mathrm{mV}$)
 
-The input offset voltage $V_{io}$ is the same quantity the datasheets label $V_{os}$ — we use the course notation $V_{io}$. If we assume the op-amp is ideal in the offset sense ($V_{io}=0$), the output would be $V_{out}=0$; a real op-amp has $V_{io}\neq 0$ and therefore a non-zero output. The non-ideal op-amp is modelled by inserting a DC source $V_{io}$ in series with the non-inverting ($+$) input of an otherwise ideal op-amp.
+The input offset voltage $V_{io}$ is the same quantity the datasheets label $V_{os}$, we use the course notation $V_{io}$. If we assume the op-amp is ideal in the offset sense ($V_{io}=0$), the output would be $V_{out}=0$; a real op-amp has $V_{io}\neq 0$ and therefore a non-zero output. The non-ideal op-amp is modelled by inserting a DC source $V_{io}$ in series with the non-inverting ($+$) input of an otherwise ideal op-amp.
 
 We are told to assume the (measured) output is $V_{out} = \mathrm{ABC}\,\mathrm{mV} = 216\,\mathrm{mV}$. In the redrawn circuit, $V_{io}$ sits in series with the $+$ terminal and is amplified by the non-inverting gain to produce the observed $V_{out}$.
 
-![ ](assets/figure2.png)
+![ ](assets/figure2.png){width=2.2in}
 \nopagebreak[4]
 
 \figcap{Figure 1 - Figure 2: Inverting amplifier used to observe input offset voltage ($R_{in}=100\,\Omega$, $R_f=100\,\mathrm{k}\Omega$).}
@@ -111,13 +111,13 @@ $$V_{out} = V_{io}\left(1 + \frac{R_f}{R_{in}}\right) \;\Rightarrow\; V_{io} = \
 
 $$V_{io} = \frac{216\,\mathrm{mV}}{1 + \dfrac{100\,\mathrm{k}\Omega}{100\,\Omega}} = \frac{216\,\mathrm{mV}}{1001} \approx 216\,\mu\mathrm{V}$$
 
-This is in the **microvolt** range — physically reasonable for a real op-amp (datasheet $V_{io}$ is typically 1–6 mV).
+This is in the **microvolt** range, physically reasonable for a real op-amp (datasheet $V_{io}$ is typically 1–6 mV).
 
 **Is it measurable?** Not directly: $V_{io}\approx 216\,\mu\mathrm{V}$ is far below the $\approx 50\,\mathrm{mV}$ lab noise floor, so it cannot be read at the input terminals.
 
 **How to find $V_{io}$:** keep the circuit in its linear operating region (output not saturated) and determine the closed-loop gain $G = 1 + R_f/R_{in}$. Then, for any output $V_{out}$ measured within the operating region, recover the offset as $V_{io} = V_{out}/G$.
 
-### 4.3 BJT Differential Pair — Bias Point Simulation
+### 4.3 BJT Differential Pair, Bias Point Simulation
 
 Figure 3 shows the first-stage differential pair that emulates the asymmetry causing offset:
 
@@ -125,7 +125,7 @@ Figure 3 shows the first-stage differential pair that emulates the asymmetry cau
 - $R_8 = 500 + \mathrm{DEF} = 500 + 307 = 807\,\Omega$
 - $I_1 = 1\,\mathrm{mA}$, $V_4 = 15\,\mathrm{V}$, $R_4 = R_6 = 3\,\mathrm{k}\Omega$
 
-![ ](assets/figure3.png)
+![ ](assets/figure3.png){width=2.0in}
 \nopagebreak[4]
 
 \figcap{Figure 2 - Figure 3: BJT differential pair with potentiometer $R_{10}$–$R_{11}$ for offset null.}
@@ -138,7 +138,7 @@ $$I_{E4} = \frac{R_8}{R_7+R_8}\times I_1 = \frac{807}{1523}\times 1\,\mathrm{mA}
 
 $$V_{out+} = 15 - 0.530\times 3 = 13.41\,\mathrm{V}, \quad V_{out-} = 15 - 0.470\times 3 = 13.59\,\mathrm{V}$$
 
-> **[SIMULATION NEEDED — 4.3]**
+> **[SIMULATION NEEDED: 4.3]**
 > Run a PSpice bias-point simulation of Figure 3 with $R_{10}, R_{11}$ disconnected. Record $V_{out+}$ and $V_{out-}$ (no print required).
 
 #### 4.3.1 Potentiometer Ratio for Zero Output
@@ -155,14 +155,14 @@ $$\frac{R_{10}}{R_{10}+R_{11}} \approx 0.505 \quad (50.5\%)$$
 
 #### 4.3.2 Simulation with Chosen Ratio
 
-> **[SIMULATION NEEDED — 4.3.2]**
+> **[SIMULATION NEEDED: 4.3.2]**
 > Simulate Figure 3 with $R_{10}=5045.5\,\Omega$, $R_{11}=4954.5\,\Omega$. Confirm $V_{out+}\approx V_{out-}$ (no print required).
 
 #### 4.3.3 10% Change in Potentiometer Ratio
 
 If the ratio changes by 10% from the balanced point, e.g. $R_{10}/R_{pot} = 0.505 \times 1.1 = 0.556$, a small asymmetry reappears.
 
-> **[SIMULATION NEEDED — 4.3.3]**
+> **[SIMULATION NEEDED: 4.3.3]**
 > Simulate with the ±10% ratio perturbation and attach a print. Record $\Delta V = V_{out+} - V_{out-}$.
 
 \newpage
@@ -181,12 +181,12 @@ $$A_d = A_{cm}\times 10^{\mathrm{CMRR_{dB}}/20} = 0.307\times 10^{81/20} = 0.307
 
 ### 5.2 Transfer Functions $A_4$ and $A_5$ ($=V_{out}/V_{in}$) for Figures 4 and 5
 
-![ ](assets/figure4.png)
+![ ](assets/figure4.png){width=2.1in}
 \nopagebreak[4]
 
 \figcap{Figure 3 - Figure 4: Common-mode circuit for measuring $A_{cm}$ (ideal output $V_{out}=0$).}
 
-![ ](assets/figure5.png)
+![ ](assets/figure5.png){width=2.5in}
 \nopagebreak[4]
 
 \figcap{Figure 4 - Figure 5: Differential (inverting) amplifier for measuring $A_d$ ($A_5=-R_f/R_{in}=-1000$).}
@@ -217,7 +217,7 @@ Because the ideal common-mode output is zero, the real common-mode output $A_{cm
 
 Without the series input resistors the closed-loop gain would be determined by the op-amp's own (uncontrolled) input impedance rather than a known resistor ratio. The resistors define the gain precisely; without them the measurement of $A_d$ or $A_{cm}$ would be unreliable. Additionally, mismatched resistors are the dominant source of finite CMRR in a real difference amplifier; specifying exact values is essential for a quantitative CMRR measurement.
 
-Alongside the resistor choice, the input amplitude must also be set appropriately for the differential measurement: for the differential amplification (Figure 5, $|A_5| = R_f/R_{in} = 1000$) we use an input amplitude of **50 m–300 mVRMS** (see §5.3). This keeps the amplified output $V_{out} = A_5 V_{in}$ within the $\pm 15\,\mathrm{V}$ supply rails and the op-amp in its linear region, so that the gain — and hence the extracted CMRR — is measured accurately rather than from a clipped (distorted) waveform.
+Alongside the resistor choice, the input amplitude must also be set appropriately for the differential measurement: for the differential amplification (Figure 5, $|A_5| = R_f/R_{in} = 1000$) we use an input amplitude of **50 m–300 mVRMS** (see Q5.3). This keeps the amplified output $V_{out} = A_5 V_{in}$ within the $\pm 15\,\mathrm{V}$ supply rails and the op-amp in its linear region, so that the gain, and hence the extracted CMRR, is measured accurately rather than from a clipped (distorted) waveform.
 
 \newpage
 
@@ -225,7 +225,7 @@ Alongside the resistor choice, the input amplitude must also be set appropriatel
 
 ### 6.1 Formulas and Definitions
 
-$$\mathrm{SR} = \left.\frac{\mathrm{d}V_{out}}{\mathrm{d}t}\right|_{\max} \quad [\mathrm{V/\mu s}]$$
+$$\mathrm{SR} = \left.\frac{\mathrm{d}V_{out}}{\mathrm{d}t}\right|_{\max} \quad [\mathrm{V}/\mu\mathrm{s}]$$
 
 $$\mathrm{FPBW} = \frac{\mathrm{SR}}{2\pi\, V_{om}} \quad [\mathrm{Hz}]$$
 
@@ -245,7 +245,7 @@ SR is a **large-signal** (nonlinear) phenomenon; finite BW is a **small-signal**
 
 ### 6.3 Maximum Input Amplitude Before SR Limiting (Figure 6)
 
-![ ](assets/figure6.png)
+![ ](assets/figure6.png){width=2.2in}
 \nopagebreak[4]
 
 \figcap{Figure 5 - Figure 6: Circuit used for slew-rate measurement ($R_{in}=100\,\Omega$, $R_f=100\,\mathrm{k}\Omega$, $|A_v|=1000$).}
@@ -258,7 +258,7 @@ Setting this equal to SR (SR-limit onset):
 
 $$V_{in,pk}^{\max} = \frac{\mathrm{SR}}{2\pi f\,|A_v|}$$
 
-For the LM741 simulation ($\mathrm{SR}=0.5\,\mathrm{V/\mu s}$, $|A_v|=1000$, $f=1\,\mathrm{kHz}$):
+For the LM741 simulation ($\mathrm{SR}=0.5\,\mathrm{V}/\mu\mathrm{s}$, $|A_v|=1000$, $f=1\,\mathrm{kHz}$):
 
 $$V_{in,pk}^{\max} = \frac{0.5\times10^6}{2\pi\times10^3\times10^3} \approx 80\,\mathrm{mV_{pk}} \approx 56\,\mathrm{mVRMS}$$
 
@@ -266,7 +266,7 @@ $$V_{in,pk}^{\max} = \frac{0.5\times10^6}{2\pi\times10^3\times10^3} \approx 80\,
 
 $$\mathrm{FPBW} = \frac{\mathrm{SR}}{2\pi\,V_{om}}$$
 
-For LM741, $\mathrm{SR}=0.5\,\mathrm{V/\mu s}$, $V_{om}\approx V_{CC}-2\,\mathrm{V}$:
+For LM741, $\mathrm{SR}=0.5\,\mathrm{V}/\mu\mathrm{s}$, $V_{om}\approx V_{CC}-2\,\mathrm{V}$:
 
 | Supply $V_{CC}$ | $V_{om}$ | FPBW |
 |:---:|:---:|:---:|
@@ -289,7 +289,7 @@ Qualitative sketch:
 
 ### 6.6 Scope Scale for SR Observation
 
-The LM741 SR $\approx 0.5\,\mathrm{V/\mu s}$. A 10–15 V output swing (full-scale) takes:
+The LM741 SR $\approx 0.5\,\mathrm{V}/\mu\mathrm{s}$. A 10–15 V output swing (full-scale) takes:
 
 $$t_{slew} = \frac{\Delta V}{\mathrm{SR}} = \frac{15}{0.5} = 30\,\mu\mathrm{s}$$
 
@@ -307,7 +307,7 @@ Recommended: **10 μs/div**, allowing the rising edge to span 3–4 divisions.
 4. Use the cursors to measure $\Delta V$ (vertical) and $\Delta t$ (horizontal) on the linear portion of the rising edge.
 5. $\mathrm{SR} = \Delta V / \Delta t$.
 
-Do **not** use frequency sweeping to measure SR — at higher frequencies, additional distortion mechanisms unrelated to SR appear and corrupt the measurement.
+Do **not** use frequency sweeping to measure SR, at higher frequencies, additional distortion mechanisms unrelated to SR appear and corrupt the measurement.
 
 \newpage
 
@@ -323,6 +323,13 @@ Qualitative semi-log Bode magnitude:
 - Decreases at $-20\,\mathrm{dB/decade}$ for $f \gg f_p$
 - Crosses 0 dB at $f_t = A_0 f_p$ (unity-gain frequency)
 
+Note that the open-loop bandwidth $f_p$ is only a few Hz, so the gain rolls off over many decades before reaching unity.
+
+![ ](assets/bode_single_pole.png)
+\nopagebreak[4]
+
+\figcap{Figure 6: Qualitative single-pole open-loop magnitude, flat at $A_0$ up to the dominant pole $f_p$ (the open-loop $-3\,$dB point), then $-20\,$dB/decade, crossing $0\,$dB (unity gain) at $f_t=A_0 f_p$.}
+
 ### 7.2 Unity-Gain BW Equals GBW in Single-Pole Model
 
 For a single-pole model, $f_t \approx A_0 f_p$ (since $f_t \gg f_p$). The GBW product of the first pole is defined as $A_0\times f_p$. Thus:
@@ -331,54 +338,78 @@ $$f_t = A_0 f_p = \mathrm{GBW}$$
 
 For a **multi-pole** op-amp, the gain falls faster above the first pole (the second pole adds additional phase and gain roll-off), so $f_t < A_0 f_p$. Hence equality holds **if and only if** the single-pole approximation is valid.
 
-### 7.3 Numerical Example: $A_0 = 10^5$, $f_p = 10\,\mathrm{Hz}$
+### 7.3 Numerical Example: $A_0 = 25+\mathrm{AB} = 46\,\mathrm{dB}$, $f_p = 50+\mathrm{DE} = 80\,\mathrm{kHz}$
 
-- **Bode slope:** $-20\,\mathrm{dB/decade}$ above $f_p = 10\,\mathrm{Hz}$
-- **Open-loop bandwidth** (−3 dB): $f_p = 10\,\mathrm{Hz}$
-- **Unity-gain bandwidth:** $f_t = A_0 f_p = 10^5\times 10 = 1\,\mathrm{MHz}$
-- **GBW** $= f_t = 1\,\mathrm{MHz}$
+Using our assigned digits $\mathrm{AB}=21$ (Shai) and $\mathrm{DE}=30$ (Dan):
 
-### 7.4 Gain at $f = 10\,\mathrm{kHz}$ and Frequency for $|A| = 10$
+- **DC gain:** $A_0 = (25+\mathrm{AB})\,\mathrm{dB} = 46\,\mathrm{dB}$, i.e. $A_0 = 10^{46/20} \approx 200\ \mathrm{V/V}$
+- **Pole / open-loop bandwidth** ($-3\,$dB): $f_p = (50+\mathrm{DE})\,\mathrm{kHz} = 80\,\mathrm{kHz}$
+- **Bode slope:** $-20\,\mathrm{dB/decade}$ above $f_p$
+- **Unity-gain bandwidth:** $f_t = A_0 f_p \approx 200\times 80\,\mathrm{kHz} \approx 16\,\mathrm{MHz}$ (equivalently $f_t = f_p\cdot 10^{46/20}$, i.e. $46/20 = 2.3$ decades above $f_p$)
+- **GBW** $= f_t \approx 16\,\mathrm{MHz}$
 
-At $f \gg f_p$: $|A(f)| \approx A_0 f_p/f$
+*The required graph for this part is the single Bode plot shown after Q7.4 (Figure 7); it carries the values from both Q7.3 ($A_0$, $f_p$, $f_t$) and Q7.4 (the two marked operating points).*
 
-$$|A(10\,\mathrm{kHz})| \approx \frac{10^5\times 10}{10^4} = 100 \quad(40\,\mathrm{dB})$$
+### 7.4 Gain at $f = 10(50+\mathrm{DE}) = 800\,\mathrm{kHz}$ and Frequency for $|A| = 0.1(25+\mathrm{AB}) = 4.6\,\mathrm{dB}$
 
-$$|A(f)| = 10 \;\Rightarrow\; f = \frac{A_0 f_p}{10} = \frac{10^5\times 10}{10} = 100\,\mathrm{kHz}$$
+Above the pole the magnitude falls as $|A|_\mathrm{dB} = A_{0,\mathrm{dB}} - 20\log_{10}(f/f_p)$.
 
-### 7.5 Closed-Loop Transfer Functions (Figures 7 and 8)
+**Gain at $f = 10(50+\mathrm{DE})\,\mathrm{kHz} = 800\,\mathrm{kHz}$** (one decade above $f_p$):
 
-![ ](assets/figure7.png)
+$$|A(800\,\mathrm{kHz})| = 46 - 20\log_{10}\frac{800\,\mathrm{kHz}}{80\,\mathrm{kHz}} = 46 - 20 = 26\,\mathrm{dB}\quad(\approx 20\ \mathrm{V/V})$$
+
+**Frequency where $|A| = 0.1(25+\mathrm{AB}) = 4.6\,\mathrm{dB}$:**
+
+$$46 - 20\log_{10}\frac{f}{f_p} = 4.6 \;\Rightarrow\; \log_{10}\frac{f}{f_p} = \frac{41.4}{20} = 2.07 \;\Rightarrow\; f = 80\,\mathrm{kHz}\times 10^{2.07} \approx 9.4\,\mathrm{MHz}$$
+
+![ ](assets/bode_numeric.png)
 \nopagebreak[4]
 
-\figcap{Figure 6 - Figure 7: Inverting amplifier for GBW measurement ($R_1=1\,\mathrm{k}\Omega$, $R_f$ variable).}
+\figcap{Figure 7: Open-loop magnitude for $A_0=25+\mathrm{AB}=46\,$dB and $f_p=50+\mathrm{DE}=80\,$kHz (Q7.3), with $f_t=\mathrm{GBW}\approx16\,$MHz; the red points mark the Q7.4 results $26\,$dB ($\approx20\,$V/V) at $800\,$kHz and $4.6\,$dB at $9.4\,$MHz.}
 
-![ ](assets/figure8.png)
+### 7.5 GBW Product for Each Circuit (Figures 7 and 8)
+
+![ ](assets/figure7.png){width=2.2in}
 \nopagebreak[4]
 
-\figcap{Figure 7 - Figure 8: Non-inverting amplifier for GBW measurement ($R_1=1\,\mathrm{k}\Omega$, $R_f$ variable, $100\,\Omega$ at $+$ input).}
+\figcap{Figure 8 - Figure 7: Non-inverting amplifier for GBW measurement ($R_1=1\,\mathrm{k}\Omega$ from the $-$ input to ground, $R_2=R_f$ variable, $10\,\mathrm{k}\Omega$ in series with the $+$ input).}
 
-For a single-pole open-loop gain $A(s) = A_0\omega_p/(s+\omega_p)$, the closed-loop TFs are:
+![ ](assets/figure8.png){width=2.2in}
+\nopagebreak[4]
 
-**Figure 7** (inverting, $R_1$ fixed, $R_f$ variable):
+\figcap{Figure 9 - Figure 8: Inverting amplifier for GBW measurement ($R_1=1\,\mathrm{k}\Omega$, $R_2=R_f$ variable, $100\,\Omega$ from the $+$ input to ground).}
 
-$$H_7(j\omega) = -\frac{R_f}{R_1}\cdot\frac{1}{1+j\omega/\omega_{3\mathrm{dB}}}, \quad \omega_{3\mathrm{dB}} = \frac{\omega_t}{1+R_f/R_1}$$
+We use the transfer functions **given in the procedure** (single-pole op-amp, finite open-loop gain $A_{OL}$), with $R_2 = R_f$, $R_1 = 1\,\mathrm{k}\Omega$, and $\omega_{3\mathrm{dB}} = \dfrac{\omega_t}{1+R_2/R_1}$:
 
-**Figure 8** (non-inverting, $R_1$ fixed, $R_f$ variable):
+**Figure 7** (non-inverting):
 
-$$H_8(j\omega) = \left(1+\frac{R_f}{R_1}\right)\cdot\frac{1}{1+j\omega/\omega_{3\mathrm{dB}}}, \quad \omega_{3\mathrm{dB}} = \frac{\omega_t}{1+R_f/R_1}$$
+$$\frac{V_{out}(s)}{V_{in}(s)} = \frac{1+R_2/R_1}{\,1+\dfrac{1}{A_{OL}}\!\left(1+\dfrac{R_2}{R_1}\right)+\dfrac{s}{\omega_{3\mathrm{dB}}}\,}$$
 
-Both share the same $\omega_{3\mathrm{dB}}$ expression with $\omega_t = 2\pi f_t = 2\pi\,\mathrm{GBW}$.
+**Figure 8** (inverting):
 
-### 7.6 GBW Product and Condition for Equality
+$$\frac{V_{out}(s)}{V_{in}(s)} = \frac{-R_2/R_1}{\,1+\dfrac{1}{A_{OL}}\!\left(1+\dfrac{R_2}{R_1}\right)+\dfrac{s}{\omega_{3\mathrm{dB}}}\,}$$
 
-$$\mathrm{GBW}_7 = \frac{R_f}{R_1}\cdot\frac{f_t}{1+R_f/R_1} = f_t\cdot\frac{R_f/R_1}{1+R_f/R_1}$$
+The **GBW product = (DC gain) × (bandwidth)**. From each TF the DC gain is the $s\to 0$ value and the bandwidth is $\omega_{3\mathrm{dB}}$. Writing $C \equiv 1+\dfrac{1}{A_{OL}}\!\left(1+\dfrac{R_2}{R_1}\right)$ for the (finite-$A_{OL}$) denominator constant:
 
-$$\mathrm{GBW}_8 = \left(1+\frac{R_f}{R_1}\right)\cdot\frac{f_t}{1+R_f/R_1} = f_t$$
+$$\mathrm{GBW}_7 = \underbrace{\frac{1+R_2/R_1}{C}}_{\text{DC gain}}\cdot\,\underbrace{\frac{\omega_t}{1+R_2/R_1}}_{\omega_{3\mathrm{dB}}} = \frac{\omega_t}{C}\qquad\text{(non-inverting)}$$
 
-For large $A_0$ ($A_0 \gg 1+R_f/R_1$), GBW$_8 = f_t$ exactly, while GBW$_7 \to f_t$ only when $R_f/R_1 \gg 1$.
+$$\mathrm{GBW}_8 = \underbrace{\frac{R_2/R_1}{C}}_{\text{DC gain}}\cdot\,\underbrace{\frac{\omega_t}{1+R_2/R_1}}_{\omega_{3\mathrm{dB}}} = \frac{\omega_t}{C}\cdot\frac{R_2/R_1}{1+R_2/R_1}\qquad\text{(inverting)}$$
 
-**Condition for approximate equality:** $R_f \gg R_1$, i.e., high closed-loop gain ($|A_{CL}| \gg 1$).
+### 7.6 GBW for Large $A_{OL}$
+
+When $A_{OL}$ is very large, $C = 1+\dfrac{1}{A_{OL}}\!\left(1+\dfrac{R_2}{R_1}\right)\to 1$, so:
+
+$$\boxed{\ \mathrm{GBW}_7 \to \omega_t\ }\qquad\text{(non-inverting, Figure 7)}$$
+
+$$\boxed{\ \mathrm{GBW}_8 \to \omega_t\cdot\frac{R_2/R_1}{1+R_2/R_1}\ }\qquad\text{(inverting, Figure 8)}$$
+
+The non-inverting circuit's GBW equals the op-amp's own unity-gain frequency $\omega_t$ ($f_t=\omega_t/2\pi$); the inverting circuit's GBW is smaller by the factor $\dfrac{R_2/R_1}{1+R_2/R_1}$ (its DC gain is $R_2/R_1$ while its bandwidth is still set by the noise gain $1+R_2/R_1$).
+
+### 7.7 Condition for the Two GBW to be Approximately Equal
+
+$$\mathrm{GBW}_8 \approx \mathrm{GBW}_7 \iff \frac{R_2/R_1}{1+R_2/R_1}\to 1 \iff R_2 \gg R_1,$$
+
+i.e. high closed-loop gain ($R_f \gg 1\,\mathrm{k}\Omega$): then the "$+1$" in the inverting circuit's noise gain is negligible and both products approach $\omega_t$.
 
 \newpage
 
@@ -386,41 +417,46 @@ For large $A_0$ ($A_0 \gg 1+R_f/R_1$), GBW$_8 = f_t$ exactly, while GBW$_7 \to f
 
 ### 8.1 $V_y/V_g$ and $V_o/V_g$ for Ideal Op-Amp (Figure 9)
 
-![ ](assets/figure9.png)
+![ ](assets/figure9.png){width=2.5in}
 \nopagebreak[4]
 
-\figcap{Figure 8 - Figure 9: Circuit for open-loop gain measurement ($R\gg r$; $V_y$ is the node between the two $R$ resistors).}
+\figcap{Figure 10 - Figure 9: Circuit for open-loop gain measurement, three equal resistors $R$ meet at node $V_y$ (to $V_{in}$, to $V_o$, and down to the $(-)$ input node $X$), which is tied to ground through $r$.}
 
-For an **ideal** op-amp with virtual ground at $V^- = V^+ = 0$:
+In Figure 9, node $V_y$ is joined by three equal resistors $R$, to the input ($V_{in}=V_g$), to the output ($V_o$), and downward to the op-amp's $(-)$ input node $X$; node $X$ connects to ground through $r$, and the $(+)$ input is grounded.
 
-Node $V_y$ connects to $V^-$ through $r$; with virtual ground $V^- = 0$ and negligible current into the ideal input: $V_y = 0$.
+For an **ideal** op-amp: $V^+ = 0 \Rightarrow V^- = X = 0$ (virtual ground), with no current into the input.
 
-By KCL at $V_y$:
-$$\frac{V_g - V_y}{R} + \frac{V_o - V_y}{R} = \frac{V_y}{r} \;\Rightarrow\; V_g + V_o = 0$$
+KCL at $X$ (with $X=0$): $\dfrac{V_y - X}{R} = \dfrac{X}{r} \Rightarrow \dfrac{V_y}{R}=0 \Rightarrow V_y = 0$.
+
+KCL at $V_y$ (with $V_y=0,\ X=0$):
+$$\frac{V_{in}-V_y}{R} + \frac{V_o-V_y}{R} + \frac{X-V_y}{R} = 0 \;\Rightarrow\; V_{in}+V_o = 0 \;\Rightarrow\; V_o = -V_{in}$$
 
 $$\boxed{\frac{V_y}{V_g} = 0, \quad \frac{V_o}{V_g} = -1}$$
 
-### 8.2 Non-Ideal Case: Which Voltages to Measure for $A_{OL}$
+### 8.2 Non-Ideal Case: Measuring $A_{OL}$
 
-For a non-ideal op-amp with finite $A_{OL}$:
+For a **non-ideal** op-amp, $V_o = A_{OL}(V^+-V^-) = -A_{OL}X$ (input draws no current). The two KCL equations become:
 
-$$V_y \approx \frac{V_g}{A_{OL}}\quad (\text{small but non-zero}),\quad V_o \approx -V_g$$
+- At $X$: $\dfrac{V_y-X}{R} = \dfrac{X}{r} \;\Rightarrow\; X = k\,V_y,\qquad k=\dfrac{r}{r+R}$
+- At $V_y$: $V_{in}+V_o+X-3V_y = 0$
 
-Measure **$V_y$** and **$V_o$**:
+Substituting $V_o=-A_{OL}X=-A_{OL}k\,V_y$ gives $\dfrac{V_{in}}{V_y}=3-k+A_{OL}k$, i.e. (dropping the negligible $+1$ since $A_{OL}\gg1$) exactly the formula quoted in the procedure under Figure 9:
 
-$$A_{OL} \approx \left|\frac{V_o}{V_y}\right|$$
+$$\boxed{\,A_{OL} = \frac{1}{k}\left(\frac{V_{in}}{V_y} - 3\right),\qquad k=\frac{r}{r+R}\,}$$
 
-This works because $V_y \approx V^-$ (the op-amp's differential input), and $A_{OL} = V_o/(V^+ - V^-) = -V_o/V_y$ for $V^+=0$.
+**Points to measure:** the input $V_{in}=V_g$ and the node **$V_y$**; then evaluate $A_{OL}$ from the boxed formula.
 
-### 8.3 Required Input Signal
+**Why $V_y$, and not the op-amp's own differential input?** The true differential input is $V^-=X=k\,V_y$, a factor $1/k$ *smaller* than $V_y$ and buried in the noise, it cannot be probed directly. $V_y$ is a real, accessible node (larger by $1/k$) that still encodes $A_{OL}$. The approximate closed-loop result $V_o/V_{in}\approx-1$ is useless here because it is essentially independent of $A_{OL}$.
+
+**Required input signal.**
 
 - **Shape:** Sine wave (to measure RMS values unambiguously; square wave would introduce harmonics)
-- **Frequency:** Low — $f < 100\,\mathrm{Hz}$ — to remain in the flat $A_{OL}$ region before the dominant pole rolls off the gain
-- **Amplitude:** $V_g \sim 100\,\mathrm{mV}$–$1\,\mathrm{V_{RMS}}$, so that $V_o = A_v\,V_g \approx V_g$ remains within $\pm 15\,\mathrm{V}$ (not clipping), and $V_y \approx V_g/A_{OL}$ is at the noise level
+- **Frequency:** Very low, of order a few Hz (e.g. $1\text{–}10\,\mathrm{Hz}$). The op-amp's open-loop bandwidth is only several Hz, so the flat (DC) value of $A_{OL}$ is reached only *below* this dominant pole; at $100\,\mathrm{Hz}$ the open-loop gain is already rolling off. In the lab the measurement is therefore swept down to $100\,\mathrm{Hz}$, $10\,\mathrm{Hz}$ and $1\,\mathrm{Hz}$ to trace the roll-off and extract the DC value.
+- **Amplitude:** $V_g$ of order $100\,\mathrm{mV}$–$1\,\mathrm{V_{RMS}}$, so that $V_o = A_v\,V_g \approx -V_g$ remains within $\pm 15\,\mathrm{V}$ (not clipping), while $V_y \approx V_g/(A_{OL}k)$ stays small but above the noise floor
 
-Expected signals: $V_o \approx -V_g$ (large, clean sine); $V_y \approx V_g/A_{OL}$ (very small, $\sim\mu\mathrm{V}$ range, noisy).
+Expected signals: $V_{in}=V_g$ and $V_o \approx -V_g$ (large, clean sines); $V_y \approx V_g/(A_{OL}k)$ (very small, near the noise floor, noisy).
 
-### 8.4 Scope Functions for Measuring the Small Signal $V_y$
+**Scope functions for measuring the small signal $V_y$** (when $V_y$ is at the measurement-noise level).
 
 - **Averaging:** The scope averages $N$ consecutive acquisitions; random noise decreases by $\sqrt{N}$ while the coherent (periodic) $V_y$ signal is preserved. Essential when $V_y$ is at the noise floor.
 - **BW Limit:** Limits the oscilloscope's measurement bandwidth (e.g., to 20 kHz), cutting broadband noise that is irrelevant for a low-frequency measurement.
@@ -430,106 +466,163 @@ Expected signals: $V_o \approx -V_g$ (large, clean sine); $V_y \approx V_g/A_{OL
 
 ## 9. Op-Amp as an Integrator
 
-### 9.1 Transfer Function (Figure 10)
+### 9.1 Transfer Function, Poles/Zeros, Canonical Form, Dominant Pole
 
-![ ](assets/figure10.png)
+![ ](assets/figure10.png){width=2.2in}
 \nopagebreak[4]
 
-\figcap{Figure 9 - Figure 10: Integrator circuit with $R_1=10\,\mathrm{k}\Omega$, $R_f=20\,\mathrm{k}\Omega$ (parallel with $C=10\,\mathrm{nF}$) and $100\,\Omega$ on the $+$ input.}
+\figcap{Figure 11 - Figure 10: Integrator circuit, input resistor $R_1$, feedback resistor $R$ in parallel with $C$, and $100\,\Omega$ on the $+$ input.}
 
-The feedback impedance is $Z_f = R_f \,\|\, \frac{1}{j\omega C}$:
+For an **ideal** op-amp the inverting input is a virtual ground, so the feedback impedance $Z_f = R \,\|\, \dfrac{1}{j\omega C} = \dfrac{R}{1+j\omega R C}$ sets the (inverting) transfer function:
 
-$$H(j\omega) = -\frac{Z_f}{R_1} = -\frac{R_f}{R_1}\cdot\frac{1}{1+j\omega R_f C}$$
+$$H(j\omega) = \frac{V_{out}}{V_{in}} = -\frac{Z_f}{R_1} = -\frac{R}{R_1}\cdot\frac{1}{1+j\omega R C}.$$
 
-### 9.2 Poles, Zeros, and Canonical Form
+**Poles and zeros:** one pole, no finite zeros.
 
-$$H(j\omega) = -\frac{R_f/R_1}{1 + j\omega/\omega_p}, \quad \omega_p = \frac{1}{R_f C}$$
+**Canonical form** (in the requested $H(s)=H_0\dfrac{\prod(\omega_z+s)}{\prod(\omega_p+s)}$ form, here with no zeros and one pole):
 
-- **1 pole**, **0 finite zeros**
-- Canonical form: $H(jf) = \dfrac{-R_f/R_1}{1 + jf/f_p}$ with $R_f/R_1 = 20\,\mathrm{k}/10\,\mathrm{k} = 2$, $f_p\approx 796\,\mathrm{Hz}$
+$$H(s) = -\frac{R}{R_1}\cdot\frac{\omega_p}{s+\omega_p}\;=\;\frac{H_0}{s+\omega_p},\quad H_0 = -\frac{R}{R_1}\,\omega_p \;\;\equiv\;\; H(j\omega)=-\frac{R/R_1}{1+j\omega/\omega_p}.$$
 
-### 9.3 Dominant Pole
+**Dominant pole:**
 
-$$f_p = \frac{1}{2\pi R_f C} = \frac{1}{2\pi\times 20\times10^3\times 10\times10^{-9}} \approx 796\,\mathrm{Hz}$$
+$$\omega_p = \frac{1}{R C}\qquad\Longleftrightarrow\qquad f_p = \frac{\omega_p}{2\pi} = \frac{1}{2\pi R C}.$$
 
-### 9.4 Approximations for $f \ll f_p$ and $f \gg f_p$
+### 9.2 Low- and High-Frequency Approximations
 
-$$H_\text{low}(j\omega)\big|_{f\ll f_p} \approx -\frac{R_f}{R_1} = -2 \quad\text{(inverting amplifier)}$$
+$$H(\omega \ll \omega_p) \approx -\frac{R}{R_1}\quad\text{(real, frequency-independent: an \textbf{inverting amplifier} of gain }-R/R_1),$$
 
-$$H_\text{high}(j\omega)\big|_{f\gg f_p} \approx -\frac{1}{j\omega R_1 C} \quad\text{(ideal integrator)}$$
+$$H(\omega \gg \omega_p) \approx -\frac{R}{R_1}\cdot\frac{\omega_p}{j\omega} = -\frac{1}{j\omega R_1 C}\quad\text{(an \textbf{ideal integrator}).}$$
 
-### 9.5 Square-Wave Input at $f \ll f_p$
+#### 9.2.1 Square Wave at $\omega \ll \omega_p$
 
-The circuit acts as an **inverting amplifier** (gain $-2$). The output is a square wave, inverted and scaled by 2 relative to the input.
+The circuit is an inverting amplifier of gain $-R/R_1$: the output is the **input square wave, inverted and scaled by $R/R_1$**, same square shape, no integration. **Action:** (inverting) amplification.
 
-### 9.6 Square-Wave Input at $f \gg f_p$
+![ ](assets/q9_lowfreq.png){width=4.0in}
+\nopagebreak[4]
 
-The circuit acts as an **ideal integrator**. The integral of a square wave is a **triangular wave**; the output is a triangular wave 90° out of phase with the input, with amplitude inversely proportional to frequency.
+\figcap{Figure 12: $\omega \ll \omega_p$, the output is a square wave, inverted and amplified by $R/R_1 = 2$ relative to the input.}
 
-### 9.7 Simulation: Bode Plot and $f_p$
+#### 9.2.2 Square Wave at $\omega \gg \omega_p$
 
-> **[SIMULATION NEEDED — 9.7]**
-> Simulate the AC Bode plot of Figure 10 in PSpice. From the flat low-frequency gain and the −3 dB rolloff point, extract $f_{-3\mathrm{dB}}$.
-> Theoretical prediction: $f_p \approx 796\,\mathrm{Hz}$.
+The circuit is an ideal integrator: the integral of a square wave is a **triangular wave**. Because the integrator inverts, the output ramps **down** while the input is high and **up** while it is low, so it is $90^\circ$ out of phase with the input, with amplitude $\propto 1/\omega$. **Action:** integration.
+
+![ ](assets/q9_highfreq.png){width=4.0in}
+\nopagebreak[4]
+
+\figcap{Figure 13: $\omega \gg \omega_p$, the output is a triangular wave (the integral of the square input), $90^\circ$ shifted and with amplitude $\propto 1/\omega$.}
+
+### 9.3 Simulation: Bode Plot and $f_p$ ($R_1=10\,\mathrm{k}\Omega$, $C=10\,\mathrm{nF}$, $R=20\,\mathrm{k}\Omega$)
+
+Substituting the values introduced in this section, the low-frequency gain and dominant pole are predicted to be
+
+$$\left|\frac{R}{R_1}\right| = \frac{20\,\mathrm{k}\Omega}{10\,\mathrm{k}\Omega} = 2 = 20\log_{10}2 \approx 6.0\,\mathrm{dB},\qquad f_p = \frac{1}{2\pi R C} = \frac{1}{2\pi(20\times10^3)(10\times10^{-9})} \approx 796\,\mathrm{Hz}.$$
+
+![ ](assets/integrator_bode_sim.png)
+\nopagebreak[4]
+
+\figcap{Figure 14: Simulated Bode plot of Figure 10 ($V_{out}/V_{in}$). Flat magnitude $\approx 6.0\,$dB ($=R/R_1=2$); the cursor at $795.8\,$Hz reads $3.00\,$dB, exactly $3\,$dB below the flat level.}
+
+The simulation matches the analysis: the magnitude is flat at $6.00\,\mathrm{dB}$ (gain $=2=R/R_1$, confirming the low-frequency inverting-amplifier behaviour of Q9.2) and rolls off at $-20\,\mathrm{dB/decade}$ above the corner. Reading the corner of the roll-off gives
+
+$$\boxed{\,f_p \approx 795.8\,\mathrm{Hz}\,}$$
+
+in excellent agreement with the theoretical $796\,\mathrm{Hz}$ (error $<0.1\%$). The phase (dotted) starts at $180^\circ$ (pure inversion at low $f$) and falls toward $90^\circ$ at high $f$ (integrator), passing $\approx135^\circ$ near $f_p$.
+
+### 9.4 −3 dB Frequency from the Simulation
+
+The $-3\,\mathrm{dB}$ frequency is where the magnitude has dropped $3\,\mathrm{dB}$ below its flat value, i.e. to $6.00-3.00 = 3.00\,\mathrm{dB}$. The simulation cursor reads exactly this level at
+
+$$\boxed{\,f_{-3\mathrm{dB}} \approx 795.8\,\mathrm{Hz}\,}$$
+
+Since the response is **single-pole**, the $-3\,\mathrm{dB}$ frequency coincides with the dominant pole, $f_{-3\mathrm{dB}} = f_p \approx 795.8\,\mathrm{Hz} \approx 1/(2\pi RC)$.
 
 \newpage
 
 ## 10. Op-Amp as a Summation Circuit
 
-### 10.1 Output of the Example Circuit (Figure 11)
+### 10.1 Output of the Example Circuit and Its Operation (Figure 11)
 
-![ ](assets/figure11.png)
+![ ](assets/figure11.png){width=2.3in}
 \nopagebreak[4]
 
-\figcap{Figure 10 - Figure 11: Inverting summing amplifier example ($R_1=R_2=R_f=R$).}
+\figcap{Figure 15 - Figure 11: Example "summation" circuit. Both sources drive the non-inverting ($+$) input through equal resistors $R$, while the inverting ($-$) input is wired directly to the output.}
 
-For the inverting summing amplifier with $R_1 = R_2 = R_f = R$:
+This circuit is **not** an inverting summer: there is no feedback resistor, both inputs feed the **non-inverting** ($+$) input through equal resistors $R$, and the $(-)$ input is tied directly to the output. For an ideal op-amp the direct feedback gives $V^- = V_{out}$, and the virtual short gives $V^+ = V^- = V_{out}$. At the $(+)$ node no current enters the op-amp, so KCL through the two equal resistors is
 
-$$V_{out} = -\frac{R_f}{R_1}V_1 - \frac{R_f}{R_2}V_2 = -(V_1 + V_2)$$
+$$\frac{V_1 - V^+}{R} + \frac{V_2 - V^+}{R} = 0 \;\Rightarrow\; V^+ = \frac{V_1+V_2}{2}.$$
 
-### 10.2 Mathematical Operation
+Therefore
 
-The circuit performs a **negated sum**: $V_{out} = -(V_1 + V_2)$. Up to a sign inversion, it adds the two inputs.
+$$\boxed{V_{out} = \frac{V_1 + V_2}{2}.}$$
 
-### 10.3 Calculation of $F$ and $L$
+**Mathematical operation:** the circuit computes the **(non-inverting) average** of the two inputs, i.e. half their sum.
 
-- $F$ = **first digit** of Shai Livshits' student ID: $208632216 \Rightarrow F = 2$ (even)
-- $L$ = **last digit** of Shai Livshits' student ID: $208632216 \Rightarrow L = 6$ (even)
+### 10.2 Assigned Function from $F$ and $L$
 
-### 10.4 Function Selection
+Both digits are taken from Shai Livshits' ID ($208632216$):
 
-From the table, **F-even / L-even** assigns the function:
+- $F$ = **first digit** $\Rightarrow F = 2$ (**even**)
+- $L$ = **last digit** $\Rightarrow L = 6$ (**even**)
 
-$$\boxed{V_{out} = -2V_1 + 2V_2}$$
+From the table, the **F-even / L-even** column assigns the function (with the feedback resistor fixed at $R_f = 10\,\mathrm{k}\Omega$):
 
-### 10.5 Circuit Design from the Master Circuit (Figure 12)
+$$\boxed{V_{out} = -2\,V_1 + 2\,V_2}\qquad (R_f = 10\,\mathrm{k}\Omega)$$
 
-The assigned function $V_{out} = -2V_1 + 2V_2$ has a $-2$ coefficient on $V_1$ (inverting) and a $+2$ coefficient on $V_2$ (non-inverting), with **equal magnitudes**. This is exactly the form produced by a **standard difference amplifier**, so there is no need to brute-force the general master circuit — by inspection the topology is a one-op-amp difference amplifier with gain 2.
+### 10.3 Circuit Design from the Master Circuit (Figure 12)
 
-For a balanced difference amplifier with $R_1$ from $V_1$ to the $(-)$ input, $R_f$ in feedback, $R_2$ from $V_2$ to the $(+)$ input, and $R_3$ from $(+)$ to ground, with the matching condition $R_1=R_2$ and $R_f=R_3$:
+We reasoned our way to the implementation in three steps. *(We use the same resistor names as the simulation schematic in 10.4: $R_{in1}$ for $V_1$'s input resistor, $R_{in2}$ for $V_2$'s, $R_f$ for the feedback, and $R_g$ from the $(+)$ input to ground.)*
 
-$$V_{out} = \frac{R_f}{R_1}\,(V_2 - V_1) = \frac{R_f}{R_1}\,V_2 - \frac{R_f}{R_1}\,V_1$$
+**Step 1, choosing which input each source drives.** Our assigned function is $V_{out} = -2V_1 + 2V_2$. The coefficient of $V_1$ is **negative**, so $V_1$ has to enter through the **inverting** $(-)$ input; the coefficient of $V_2$ is **positive**, so $V_2$ has to enter through the **non-inverting** $(+)$ input. The two magnitudes are equal ($2$), which is precisely the behaviour of a one-op-amp **difference amplifier**, $V_{out} = \frac{R_f}{R_{in1}}(V_2 - V_1)$. Recognising this lets us read the design directly off the master circuit instead of solving the general case.
 
-Setting $\dfrac{R_f}{R_1} = 2$ gives $V_{out} = -2V_1 + 2V_2$, as required. Choosing standard board values:
+**Step 2, sizing the resistors for the gain ratio.** On the inverting path the gain magnitude is $R_f/R_{in1}$, and we need it to be $2$. The procedure fixes the feedback resistor at $R_f = 10\,\mathrm{k}\Omega$, so we are forced to take
 
-$$R_1 = R_2 = 10\,\mathrm{k}\Omega, \qquad R_f = R_3 = 20\,\mathrm{k}\Omega \quad (4\ \text{resistors total})$$
+$$R_{in1} = \frac{R_f}{2} = 5\,\mathrm{k}\Omega.$$
 
-In terms of the master circuit (Figure 12): connect $V_1$ through $10\,\mathrm{k}\Omega$ to the $(-)$ input, $V_2$ through $10\,\mathrm{k}\Omega$ to the $(+)$ input, place a $20\,\mathrm{k}\Omega$ feedback resistor from output to $(-)$, tie the $(+)$ input to ground through $20\,\mathrm{k}\Omega$, and leave any remaining free nodes/resistors disconnected. This satisfies the "$\leq 4$ resistors" hint and uses only the matched-ratio symmetry rather than the general solution.
+**Step 3, balancing the non-inverting path.** The clean result $V_{out} = \frac{R_f}{R_{in1}}(V_2 - V_1)$ holds only if the two branches are matched, i.e. $R_{in2} = R_{in1}$ (so $V_2$'s series resistor equals $V_1$'s) and $R_g = R_f$ (the $(+)$-to-ground resistor equals the feedback). With that match the non-inverting gain $\left(1+\frac{R_f}{R_{in1}}\right)\frac{R_g}{R_{in2}+R_g}$ also comes out to exactly $2$, so it cancels $V_1$ and $V_2$ with equal weight. This forces $R_{in2} = R_{in1} = 5\,\mathrm{k}\Omega$ and $R_g = R_f = 10\,\mathrm{k}\Omega$. Our chosen values are therefore
 
-### 10.6 Simulation of the Designed Circuit
+$$\boxed{R_f = R_g = 10\,\mathrm{k}\Omega,\qquad R_{in1} = R_{in2} = 5\,\mathrm{k}\Omega}\qquad (4\ \text{resistors}).$$
 
-> **[SIMULATION NEEDED — 10.6]**
-> Simulate the difference amplifier above in PSpice with $V_{g1}$ a square wave and $V_{g2}$ at **equal amplitude** to $V_{g1}$. Attach: (i) $V_g$ with $V_{in1}, V_{in2}$, (ii) both inputs $V_{in1}, V_{in2}$ together with the output $V_{out}$. Annotate the prints with key amplitudes to confirm $V_{out} = -2V_{in1} + 2V_{in2}$ (i.e. $V_{out}=2(V_{in2}-V_{in1})$).
+Substituting back confirms the full transfer function: $V_{out} = \left(1+\dfrac{R_f}{R_{in1}}\right)\dfrac{R_g}{R_{in2}+R_g}V_2 - \dfrac{R_f}{R_{in1}}V_1 = 3\cdot\dfrac{10}{15}V_2 - 2V_1 = 2V_2 - 2V_1$, as required.
+
+All four values are free resistors on the board ($10\,\mathrm{k}\Omega$: R5 / R9 / R18; $5\,\mathrm{k}\Omega$: R6 / R11 / R19), so our design uses only available board resistors and stays within the "$\leq 4$ resistors" hint. Mapping onto the master circuit (Figure 12): $V_1$ enters the $(-)$ input through $R_{in1}=5\,\mathrm{k}\Omega$, $V_2$ enters the $(+)$ input through $R_{in2}=5\,\mathrm{k}\Omega$, the $R_f=10\,\mathrm{k}\Omega$ feedback resistor runs from the output back to $(-)$, the $(+)$ input is tied to ground through $R_g=10\,\mathrm{k}\Omega$, and the remaining free nodes/resistors are left disconnected.
+
+### 10.4 Simulation of the Designed Circuit
+
+The designed difference amplifier was simulated in LTspice with the board values $R_{in1}=R_{in2}=5\,\mathrm{k}\Omega$, $R_f=R_g=10\,\mathrm{k}\Omega$ and $\pm15\,\mathrm{V}$ rails. The square-wave source $V_g$ (a $\pm1\,\mathrm{V}$, $0.4\,\mathrm{ms}$-period = $2.5\,\mathrm{kHz}$ pulse) is applied directly as $V_{in1}$, while $V_{in2}$ is taken from the on-board integrator of Q9 (R$=20\,\mathrm{k}\Omega$, $C=10\,\mathrm{nF}$, $R_1=10\,\mathrm{k}\Omega$) driven by the same $V_g$. Since $2.5\,\mathrm{kHz}\gg f_p\approx796\,\mathrm{Hz}$, the integrator operates above its pole and converts the square wave into the triangular $V_{in2}$, two inputs of essentially equal amplitude, as required.
+
+![ ](assets/q10_schematic.png)
+\nopagebreak[4]
+
+\figcap{Figure 16: Simulated circuit, the integrator (left, generating triangular $V_{in2}$) feeding the designed difference amplifier $U_2$ ($R_{in1}=R_{in2}=5\,\mathrm{k}\Omega$, $R_f=R_g=10\,\mathrm{k}\Omega$).}
+
+![ ](assets/q10_inputs.png)
+\nopagebreak[4]
+
+\figcap{Figure 17: The two inputs of equal amplitude, $V_{in1}$ (green, $\pm1\,\mathrm{V}$ square wave) and $V_{in2}$ (blue, $\approx\pm0.9\,\mathrm{V}$ triangular integrator output).}
+
+![ ](assets/q10_inputs_output.png)
+\nopagebreak[4]
+
+\figcap{Figure 18: Top, inputs $V_{in1}$ (green, $\pm1\,$V) and $V_{in2}$ (magenta, peaks $+914\,$mV / $-926\,$mV). Bottom, output $V(\mathrm{sum})$ (red, $+3.826\,$V cursor) overlaid with the target $-2\,V_{in1}+2\,V_{in2}$ (cyan, $+3.825\,$V); the two traces coincide.}
+
+**Result:** The cursors in Figure 18 verify both the equal-amplitude inputs and the transfer function:
+
+- **Inputs:** $V_{in1}=+1.00\,\mathrm{V}$ / $-1.00\,\mathrm{V}$ (cursors at $700\,\mu\mathrm{s}$ and $898\,\mu\mathrm{s}$); $V_{in2}=+914\,\mathrm{mV}$ / $-926\,\mathrm{mV}$ (cursors at $1\,\mathrm{ms}$ and $802\,\mu\mathrm{s}$), i.e. essentially equal amplitudes ($\approx2\,\mathrm{V_{pp}}$ vs $\approx1.84\,\mathrm{V_{pp}}$).
+- **Output:** at the positive peak ($t=1\,\mathrm{ms}$, where $V_{in1}=-1\,\mathrm{V}$, $V_{in2}=+914\,\mathrm{mV}$) the measured $V(\mathrm{sum})=+3.826\,\mathrm{V}$, while the reference trace $-2\,V_{in1}+2\,V_{in2}$ reads $+3.825\,\mathrm{V}$, agreement to $\sim0.3\,\mathrm{mV}$. The hand-check matches: $-2(-1)+2(0.914)=+3.83\,\mathrm{V}$.
+
+Across a full cycle the output ramps between $\approx\pm3.8\,\mathrm{V}$ (each square-wave edge giving a $\Delta V_{out}=\mp4\,\mathrm{V}$ jump from the $-2\,\Delta V_{in1}$ term). The red $V(\mathrm{sum})$ trace lying on top of the cyan $-2\,V_{in1}+2\,V_{in2}$ reference confirms $V_{out}=-2V_{in1}+2V_{in2}=2(V_{in2}-V_{in1})$.
 
 \newpage
 
-## 11. 3 dB Frequency Measurement (Self-Quiz)
+## 11. 3 dB Frequency Measurement
 
-### 11.1 Horizontal Scale for 3 dB Frequency Measurement (SWEEP Mode)
+### 11.1 Horizontal Scale for the SWEEP-Mode Measurement
 
-In SWEEP mode, the function generator sweeps from $f_\text{start}$ to $f_\text{end}$ in $T_\text{sweep}$ seconds. The horizontal scale must be set so that the entire frequency range of interest (flat region to well past the 3 dB frequency) fits within the 10-division screen.
+In SWEEP mode the horizontal axis is **time**, and the generator sweeps the frequency **linearly** with time. The 3 dB-frequency formula
 
-A sweep time of **1 second** is standard. The horizontal scale is then $T_\text{sweep}/10 = \mathbf{100\,\mathrm{ms/div}}$.
+$$f_{-3\mathrm{dB}} = f_\text{start} + \frac{\Delta t}{T_\text{sweep}}\,f_\text{sweep}$$
+
+converts a measured time interval $\Delta t$ into a frequency, and this conversion is valid **only because frequency and horizontal position (time) are linearly related** in the sweep. We must therefore use a **linear horizontal (time) scale**, not a logarithmic one, so that equal horizontal distances correspond to equal frequency increments. In practice the scale is set so the full sweep $T_\text{sweep}$ spans the 10-division screen (e.g. $T_\text{sweep}=1\,$s $\to 100\,$ms/div), placing both the flat region and the 3 dB crossing on screen so $\Delta t$ can be read directly with the cursors.
 
 ### 11.2 Relationship Between $V_{pp}$ at Low Frequency and Amplitude at 3 dB (LPF)
 
@@ -537,34 +630,34 @@ In the flat (low-frequency) region of an LPF, the output peak-to-peak amplitude 
 
 At the $-3\,\mathrm{dB}$ frequency, the amplitude drops by $1/\sqrt{2}$:
 
-$$V_{-3\mathrm{dB}} = \frac{A_\text{flat}}{\sqrt{2}} = \frac{V_{pp}}{2\sqrt{2}} = \frac{V_{pp}}{\sqrt{2}\cdot 2} \approx 0.354\, V_{pp}$$
+$$V_{-3\mathrm{dB}} = \frac{A_\text{flat}}{\sqrt{2}} = \frac{V_{pp}}{2\sqrt{2}} \approx 0.354\, V_{pp}$$
 
 Equivalently, $V_{pp}$ at 3 dB equals $V_{pp,\text{flat}}/\sqrt{2}$.
 
-### 11.3 Measuring the 3 dB Frequency of an HPF
+### 11.3 First Step: Identify the Frequency-Response Shape
 
-1. **Perform an AC sweep.** Confirm the response resembles an HPF (low amplitude at low $f$, flat at high $f$).
-2. **Identify the flat high-frequency region.** Measure $V_{out,\text{RMS}}$ and $V_{in,\text{RMS}}$ at a frequency where the gain is flat; compute $A_\text{flat} = V_{out}/V_{in}$.
-3. **Compute the −3 dB level:** $A_{-3\mathrm{dB}} = A_\text{flat}/\sqrt{2}$.
-4. **Decrease frequency from the flat region** while continuously monitoring $V_{out,\text{RMS}}/V_{in,\text{RMS}}$. Keep the signal on screen (several cycles, good resolution).
-5. When the ratio falls to $A_{-3\mathrm{dB}}$, record the frequency — this is $f_{-3\mathrm{dB}}$.
-6. **Caution:** at very low frequencies, one period may exceed the scope's useful time window; ensure at least 5 full cycles are visible. Do not go below $\sim$10 Hz unless the expected 3 dB frequency is there. Also verify the output is a clean sinusoid (not distorted) before recording.
+Before measuring anything quantitatively, we perform an **AC sweep** to see the overall shape of the circuit's frequency response. We then compare that shape with our preliminary analysis: we determine whether the response is **low-pass, band-pass or high-pass**, check that it agrees with what we predicted for the circuit, and confirm the circuit is working correctly (a response that matches none of the expected filter shapes usually indicates it is wired incorrectly). Only once the shape is understood and consistent with the prelab do we go on to measure the 3 dB frequency.
+
+*Sections 11.4–11.13 of the procedure are explanatory instructions for the lab's measurement method and require no answers; the next question is 11.14.*
+
+### 11.14 Measuring the 3 dB Frequency When the Sweep Resembles an HPF
+
+If the AC sweep shows a **high-pass** shape (small output at low $f$, flat at high $f$), the flat reference region is at the **high-frequency** end, so we characterise it there first and then sweep the frequency **downward**:
+
+1. **Find the flat (high-frequency) region** and measure the input and output in **RMS**; the flat gain is $A_\text{flat} = V_{out}/V_{in}$. (Keep the high end below the lab's $4\,\mathrm{MHz}$ limit so the lumped-element model still holds.)
+2. **Compute the target level** $A_{-3\mathrm{dB}} = A_\text{flat}/\sqrt{2}$ (a drop of $3\,$dB from the flat gain).
+3. **Lower the frequency** from the flat region while continuously monitoring the ratio $V_{out,\text{RMS}}/V_{in,\text{RMS}}$; it stays roughly constant in the flat band, then falls as the corner is approached.
+4. **Record $f_{-3\mathrm{dB}}$** as the frequency at which the ratio reaches $A_{-3\mathrm{dB}}$.
+
+**What to be careful with:**
+
+- Measure the **input as well**, not just the output: the 3 dB point is defined on the *transfer function* $V_{out}/V_{in}$, and the source amplitude may drift with frequency.
+- Use **RMS** readings, since noise spikes corrupt a $V_{pp}$ measurement.
+- As the frequency drops the period grows, so keep at least **5 full cycles** on screen with good resolution; do not go needlessly low.
+- Keep the circuit **linear**: the output must stay an **undistorted sine**, otherwise reduce the input amplitude before recording.
 
 \newpage
 
-## 12. Table Measurement — Frequency Dependence (Self-Quiz)
+## 12. Table Measurement: Frequency Dependence
 
-When filling the quantitative measurement tables in the lab, keep the following rules:
-
-- **Always measure the input as well**, since it does not necessarily stay constant across frequency; gain is the ratio of the *transfer-function* output to input (not always the circuit's terminals).
-- **Prefer RMS over $V_{pp}$**: electrical noise can create spurious peaks that corrupt a $V_{pp}$ reading, whereas RMS averages them out.
-- **Sign convention:** if a V/V (gain) column is requested, include the sign when it is definitive (e.g. negative for an inverting stage). If a dB column is requested instead, compute $A_\mathrm{dB} = 20\log_{10}|A|$.
-- **Phase:** when measuring phase, take the phase of $V_o/V_i$ (not $V_i/V_o$) and add $180^\circ$ whenever the sign flips.
-- **Linearity:** the transfer-function concept assumes a linear system, so both input and output must be **undistorted sine waves**. If the output is distorted, reduce the input amplitude until the circuit operates linearly before recording.
-
-## References
-
-- Sedra, A. S., & Smith, K. C. *Microelectronic Circuits*, 6th ed. Oxford University Press. Chapters 2, 12.
-- Millman, J., & Halkias, C. *Integrated Electronics*. Chapters 15–16.
-- TL071M, TL061M, LM741 Datasheets (Texas Instruments / National Semiconductor).
-- "How to read an op-amp data sheet" — course Moodle resource.
+No questions are asked in this part of the procedure; it is purely informative, explaining the table-measurement method used during the lab. No answers are required here.
